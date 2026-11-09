@@ -1,6 +1,6 @@
 # Roteiros por tipo de tarefa
 
-Adaptado dos playbooks do `pstack-t3` (ver `README.md`). Siga o roteiro indicado
+Siga o roteiro indicado
 no pedido. Ele não substitui as proibições do pedido, e os princípios estão em
 `principios.md`, nesta mesma pasta.
 

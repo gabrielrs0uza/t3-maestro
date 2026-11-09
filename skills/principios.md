@@ -1,6 +1,6 @@
 # Princípios
 
-Adaptado do `pstack-t3` (ver `README.md`). Valem em todo chat.
+Valem em todo chat.
 
 - **Prove que funciona.** Cheque a coisa real, não um indicador dela. "Compilou" e
   "o agente disse" não contam. Se der, deixe um script que qualquer um possa rodar.

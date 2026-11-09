@@ -25,8 +25,3 @@ trocar: ele descobre sozinho.
 
 As regras foram escritas em português, para uso real em um time pequeno. Ajuste
 sem dó.
-
-## Créditos
-
-As skills foram adaptadas do [pstack-t3](https://github.com/creedants/pstack-t3),
-com licença MIT. Veja `skills/README.md` e `skills/LICENSE`.
