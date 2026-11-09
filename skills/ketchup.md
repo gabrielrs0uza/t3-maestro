@@ -1,4 +1,4 @@
-# Ketchup: botar o Gabriel em dia
+# Ketchup: botar o dono em dia
 
 Use quando ele perguntar "onde estávamos", "como tá", ou ficar um tempo fora.
 Só leitura. Não abra chat, não envie ordem, não altere nada.
@@ -19,6 +19,6 @@ Só leitura. Não abra chat, não envie ordem, não altere nada.
 - O que aconteceu: até 100 palavras, uma linha por assunto, dizendo se está
   pronto, rodando, falhou ou não foi verificado.
 - Pendências: cada uma com cerca de 30 palavras, o bastante para ele decidir
-  sem abrir nada: a decisão, sua recomendação, o que muda para o aluno e o risco.
+  sem abrir nada: a decisão, sua recomendação, o que muda para o usuário e o risco.
   Nunca corte uma pendência para caber.
 - Nunca dê como pronto o que ainda depende dele. Escreva "não sei" no que não souber.

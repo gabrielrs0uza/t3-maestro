@@ -1,4 +1,4 @@
-# Skills do T3 Control
+# Skills do chat mestre
 
 Adaptadas ao fluxo deste chat a partir do `pstack-t3`
 (https://github.com/creedants/pstack-t3), com licença MIT:
@@ -12,4 +12,4 @@ Nada aqui autoriza merge, deploy, alteração em produção ou exclusão.
 
 Para usar num chat filho, cite no `message` o caminho absoluto do arquivo, porque
 o filho não vê esta pasta por conta própria:
-`/Users/gabrielsouza/t3-master/skills/<nome>.md`.
+`<pasta do mestre>/skills/<nome>.md`.

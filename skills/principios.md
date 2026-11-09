@@ -14,8 +14,8 @@ Adaptado do `pstack-t3` (ver `README.md`). Valem em todo chat.
 - **Não trave por bobagem.** Se a dúvida é um fato que dá para descobrir rodando
   algo, rode e descubra. Decida o que for reversível e mostre o resultado.
   Direção de produto, ação irreversível, dados de produção e acesso que falta
-  continuam sendo do Gabriel: pare e pergunte.
-- **Primeiro a experiência.** Em dúvida entre o conforto de implementar e o aluno,
-  fique com o aluno. Melhor menos coisas bem-acabadas.
+  continuam sendo do dono: pare e pergunte.
+- **Primeiro a experiência.** Em dúvida entre o conforto de implementar e o usuário,
+  fique com o usuário. Melhor menos coisas bem-acabadas.
 - **Lição vira trava.** Se a mesma instrução apareceu duas vezes, procure um tipo,
   lint, script ou checagem que a garanta. Veja `correct.md`.

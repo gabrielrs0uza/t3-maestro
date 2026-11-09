@@ -63,7 +63,7 @@ opinião com os motivos. Se a premissa do pedido estiver errada, diga.
 Serve para decidir, é descartável e não é a entrega final.
 
 1. Diga qual decisão ele ajuda a tomar. Sem decisão, não há protótipo.
-2. Faça rápido, isolado do código de produção e invisível para alunos. Qualidade de
+2. Faça rápido, isolado do código de produção e invisível para usuários. Qualidade de
    código não importa aqui.
 3. Compare as alternativas atrás de um seletor, cada uma com nome, usando os mesmos
    dados fictícios.

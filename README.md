@@ -16,10 +16,12 @@ O `estado.md`, com os chats em andamento, fica de fora do repositório.
 
 ## Como usar
 
-1. Crie uma pasta só para o chat mestre e registre-a como projeto no T3.
-2. Copie estes arquivos para lá e ajuste no `AGENTS.md` o nome, os caminhos, o
-   `threadId` do seu chat mestre e as regras do seu time.
-3. Abra um chat nesse projeto e peça para ele ler o `AGENTS.md` e assumir o papel.
+1. Clone este repositório e registre a pasta como projeto no T3.
+2. Abra um chat nesse projeto e peça para ele ler o `AGENTS.md` e assumir o papel.
+
+Na primeira vez, ele pergunta o seu nome e cria o `config.local.md`, que fica fora
+do git, a partir de `config.exemplo.md`. Não há caminho nem identificador para
+trocar: ele descobre sozinho.
 
 As regras foram escritas em português, para uso real em um time pequeno. Ajuste
 sem dó.

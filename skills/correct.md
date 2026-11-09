@@ -1,6 +1,6 @@
 # Correct: tornar impossível o erro repetido
 
-Use quando o Gabriel corrigir duas vezes o mesmo tipo de erro num repo, ou quando
+Use quando o dono corrigir duas vezes o mesmo tipo de erro num repo, ou quando
 ele pedir. É trabalho de código: vai para um chat filho e segue "Caminho até o
 merge". Primeiro traga a proposta; só implemente depois do ok dele.
 

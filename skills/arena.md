@@ -1,6 +1,6 @@
 # Arena: várias tentativas, uma escolha
 
-Use só quando o Gabriel quiser explorar opções, ou confirmar com ele quando uma
+Use só quando o dono quiser explorar opções, ou confirmar com ele quando uma
 tentativa só puder travar o caminho errado. Custa várias vezes mais: diga isso.
 
 ## Enquadrar
@@ -21,7 +21,7 @@ Com todas prontas, abra um chat de outra família de modelo, só leitura, com os
 critérios e as tentativas. Ele pontua cada critério e recomenda uma base. Leia as
 tentativas e compare. Se discordarem, leia os dois motivos.
 
-Se a escolha for visual ou de produto, quem decide é o Gabriel: mostre as opções
+Se a escolha for visual ou de produto, quem decide é o dono: mostre as opções
 com sua recomendação, comparáveis no mesmo lugar e com os mesmos dados.
 
 ## Juntar
