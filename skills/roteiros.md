@@ -58,6 +58,13 @@ Só leitura. O resultado é uma explicação com fontes ou uma recomendação.
 Separe confirmado de hipótese, cite arquivo e linha ou a consulta usada, e dê sua
 opinião com os motivos. Se a premissa do pedido estiver errada, diga.
 
+## Documento e análise
+
+1. Combine a pergunta, o público e onde salvar a entrega.
+2. Use fontes reais e cite cada uma. Separe fato, cálculo e opinião.
+3. Confira os números e as citações na fonte antes de entregar.
+4. Salve no destino combinado e diga o que não foi possível verificar.
+
 ## Protótipo
 
 Serve para decidir, é descartável e não é a entrega final.

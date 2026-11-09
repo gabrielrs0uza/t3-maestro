@@ -17,8 +17,8 @@ com o mesmo pedido. Cada um entrega o resultado, o motivo e o que descartou, sem
 
 ## Julgar
 
-Com todas prontas, abra um chat de outra família de modelo, só leitura, com os
-critérios e as tentativas. Ele pontua cada critério e recomenda uma base. Leia as
+Com todas prontas, abra um chat de outro modelo, ou do mesmo em chat novo avisando
+disso, só leitura, com os critérios e as tentativas. Ele pontua cada critério e recomenda uma base. Leia as
 tentativas e compare. Se discordarem, leia os dois motivos.
 
 Se a escolha for visual ou de produto, quem decide é o dono: mostre as opções

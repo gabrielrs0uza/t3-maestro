@@ -5,7 +5,8 @@ durável surgiu. Caso isolado não é aprendizado.
 
 ## Revisar
 
-Abra um único chat de outro modelo, só leitura, no projeto deste chat mestre. Passe o
+Abra um único chat de outro modelo, ou do mesmo em chat novo avisando disso, só
+leitura, no projeto deste chat mestre. Passe o
 `threadId` deste chat e o dos filhos envolvidos, e nenhum outro. Ele procura, sem
 copiar dados pessoais ou credenciais:
 
