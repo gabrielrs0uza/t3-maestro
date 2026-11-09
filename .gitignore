@@ -1,0 +1,5 @@
+estado.md
+.DS_Store
+.claude/
+.context/
+*.local.*
