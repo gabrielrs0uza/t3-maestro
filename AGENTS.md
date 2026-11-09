@@ -46,7 +46,7 @@ Em cada chat novo, preencha:
 - `title`: nome curto que o dono reconheça no celular.
 - `projectId`: o projeto onde o trabalho acontece.
 - `modelSelection`: executor e modelo sempre explícitos.
-- `workspaceStrategy: { "type": "worktree", "baseRef": "<branch principal>" }`
+- `workspaceStrategy: { "type": "worktree", "baseRef": "<branch principal>", "startFromOrigin": true }`
   para qualquer trabalho que altere arquivos.
 - `message`: a tarefa completa.
 - Um `clientRequestId` novo para cada chat.
@@ -62,7 +62,9 @@ O filho não vê esta conversa. O campo `message` deve conter tudo:
 
 1. Objetivo e contexto.
 2. Critérios de aceite.
-3. Branch nova, e o que fazer até o PR, conforme "Caminho até o merge".
+3. Branch nova, e o que fazer até o PR, conforme "Caminho até o merge". O filho
+   começa com `git fetch` e, se estiver atrás da branch principal remota, atualiza
+   antes de trabalhar.
 4. Testes a rodar, e a instrução de copiar o resultado real na resposta final.
 5. Proibição de merge e deploy.
 6. O que fazer em caso de dúvida: se der para descobrir rodando algo, rodar;

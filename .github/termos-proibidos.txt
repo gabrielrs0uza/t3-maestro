@@ -1,0 +1,4 @@
+Gabriel
+gabrielsouza
+papoderesidencia
+(^|[^A-Za-z-])pdr([^A-Za-z-]|$)
