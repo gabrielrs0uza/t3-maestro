@@ -1,0 +1,10 @@
+# Uma vez por semana, o Dependabot abre PR para atualizar as GitHub Actions dos
+# workflows, mantendo a fixação por SHA e a versão no comentário. Os binários
+# do shellcheck e do gitleaks, fixados por SHA-256 no ci.yml, ficam fora e sobem
+# à mão. Um PR do Dependabot passa pelo CI e pela revisão como qualquer outro.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

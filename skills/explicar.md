@@ -1,7 +1,7 @@
 # Explicar: desenhos grandes, poucas palavras
 
 Use quando o dono pedir para entender algo, escrever "eli5", ou quando "O momento
-certo" do `AGENTS.md` indicar. Explique para quem não sabe nada do assunto. Só leitura: não altere arquivos nem abra chats.
+certo", no fim desta skill, indicar. Explique para quem não sabe nada do assunto. Só leitura: não altere arquivos nem abra chats.
 
 ## Entender primeiro
 
@@ -31,3 +31,17 @@ cores fixas.
 Com interface `texto`, só gere a página se ele escrever "eli5" ou pedir desenho. Sem
 página, ou se `html_render` não estiver disponível, explique em texto, com a mesma
 estrutura.
+
+## O momento certo
+
+Com interface `visual`, não espere o pedido. Mostre uma página na conversa quando
+ela fizer a pessoa entender ou decidir mais rápido que o texto:
+
+- um fluxo ou mecanismo com três passos ou mais, ou a causa de um bug;
+- a explicação de algo que a pessoa demonstrou não conhecer;
+- uma comparação entre três opções ou mais, ou números com tendência;
+- a volta depois de um tempo, com várias frentes em aberto (`painel`).
+
+Não mostre em respostas curtas, confirmações, status, rotinas sem novidade, nem para
+repetir o que já foi dito. No máximo uma página por resposta, e o texto ao lado não
+repete o conteúdo dela. Quem preferir sem isso escolhe `texto`, e basta pedir.

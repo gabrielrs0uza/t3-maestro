@@ -1,0 +1,19 @@
+# 002 (versão 2.0.0): acrescenta ao local/config.md os campos novos, com o valor
+# padrão. Não muda valor que a pessoa já escreveu e mantém os campos que só
+# existem na cópia dela.
+campo | Abrir chats sem perguntar | perguntar
+campo | Chats rodando ao mesmo tempo | 4
+campo | Vagas pesadas | 1
+campo | Rodadas de revisão por PR | 3
+campo | Rodapé de pedidos | sim
+campo | Pasta de provas | local/provas
+campo | Demo | nenhuma
+campo | Faxina | não quero
+campo | Faxina automática | não
+campo | Atualização automática | sim
+campo | Canal | estável
+campo | Origem das atualizações | origin
+campo | Exigir tag assinada | não
+tarefa | AVISAR_ATUALIZACAO
+tarefa | PERGUNTAR_PARALELO
+tarefa | CRIAR_ROTINA_ATUALIZACAO
