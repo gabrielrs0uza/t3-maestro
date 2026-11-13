@@ -4,6 +4,7 @@ Valem em todo chat.
 
 - **Prove que funciona.** Cheque a coisa real, não um indicador dela. "Compilou" e
   "o agente disse" não contam. Se der, deixe um script que qualquer um possa rodar.
+  A prova vale para a versão em que rodou; anotação antiga não prova o presente.
 - **Corrija a causa.** O sintoma é onde o erro apareceu; a causa é o primeiro lugar
   em que o sistema errou. Procure o mesmo defeito em outros lugares. Se o estado
   nunca deveria existir, uma checagem onde quebrou só esconde o bug.
