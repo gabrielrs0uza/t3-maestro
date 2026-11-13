@@ -1,0 +1,123 @@
+# Conferências de toda mudança: privacidade (a checagem e a suíte dela),
+# coerência da base, a suíte do atualizador em Linux e macOS (também com CDPATH
+# exportado), shellcheck e gitleaks. Actions fixadas por SHA completo, com a
+# versão em comentário; binários baixados conferidos por SHA-256. Nenhum job
+# escreve no repositório.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  privacidade:
+    name: Privacidade
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Nada pessoal nos arquivos versionados
+        run: bash scripts/checar-privacidade.sh
+      - name: Suíte da checagem de privacidade
+        run: bash tests/privacidade.sh
+
+  base:
+    name: Base coerente
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Versão, bloco fixo, skills citadas e migrações
+        run: bash scripts/checar-base.sh
+
+  testes:
+    name: Testes (${{ matrix.os }}${{ matrix.cdpath != '' && ', CDPATH' || '' }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        cdpath: ['', '.:/tmp']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Suíte do atualizador
+        env:
+          CDPATH_TESTE: ${{ matrix.cdpath }}
+        run: |
+          bash --version | head -1
+          if [ -n "$CDPATH_TESTE" ]; then
+            CDPATH="$CDPATH_TESTE"
+            export CDPATH
+            echo "CDPATH exportado: $CDPATH"
+          fi
+          bash tests/atualizacao.sh --verboso
+
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      SHELLCHECK_VERSAO: 0.11.0
+      SHELLCHECK_SHA256: b7af85e41cc99489dcc21d66c6d5f3685138f06d34651e6d34b42ec6d54fe6f6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Instala o shellcheck, conferido pelo SHA-256
+        run: |
+          arquivo="shellcheck-v${SHELLCHECK_VERSAO}.linux.x86_64.tar.gz"
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/$arquivo" \
+            "https://github.com/koalaman/shellcheck/releases/download/v${SHELLCHECK_VERSAO}/$arquivo"
+          echo "${SHELLCHECK_SHA256}  $RUNNER_TEMP/$arquivo" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/$arquivo" -C "$RUNNER_TEMP"
+      - name: Confere os scripts
+        run: |
+          sc="$RUNNER_TEMP/shellcheck-v${SHELLCHECK_VERSAO}/shellcheck"
+          "$sc" --version
+          "$sc" --external-sources --source-path=SCRIPTDIR --severity=warning scripts/*.sh tests/*.sh
+
+  gitleaks:
+    name: Gitleaks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      GITLEAKS_VERSAO: 8.30.1
+      GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      # O binário, de licença MIT, roda sem segredo nem licença; a action pede
+      # licença se o repositório passar para uma organização.
+      - name: Instala o gitleaks, conferido pelo SHA-256
+        run: |
+          arquivo="gitleaks_${GITLEAKS_VERSAO}_linux_x64.tar.gz"
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/$arquivo" \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSAO}/$arquivo"
+          echo "${GITLEAKS_SHA256}  $RUNNER_TEMP/$arquivo" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/$arquivo" -C "$RUNNER_TEMP" gitleaks
+      - name: Procura segredos em todo o histórico
+        run: |
+          "$RUNNER_TEMP/gitleaks" version
+          "$RUNNER_TEMP/gitleaks" git --redact --no-banner --exit-code 1 .

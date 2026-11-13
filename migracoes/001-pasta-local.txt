@@ -1,0 +1,9 @@
+# 001 (versão 2.0.0): leva config.local.md e estado.md da raiz para local/.
+pasta | local/pautas
+pasta | local/diario
+pasta | local/arquivo
+pasta | local/backups
+mover | config.local.md | local/config.md
+arquivar | estado.md | local/arquivo/estado-v1.md
+criar-estado
+tarefa | MONTAR_PAUTAS
