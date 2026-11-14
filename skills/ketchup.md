@@ -20,13 +20,14 @@ altere nada.
   exemplos em português; diga o equivalente.
 - Comece com uma frase dizendo o que depende dele, ou que nada depende.
 - Depois, o bloco "Desde a última vez" de `pedidos.md`, agrupado por projeto.
-- Linguagem de conversa. Diga o que mudou para ele, não como foi feito. Sem hash,
-  caminho, comando ou contagem de testes, salvo se ele precisar para agir.
+- Linguagem de conversa, como em "Como escrever para o dono" do `AGENTS.md`.
+  Diga o que mudou para ele, não como foi feito. Sem hash, caminho, comando ou
+  contagem de testes, salvo se ele precisar para agir.
 - O que aconteceu: até 100 palavras, uma linha por assunto, dizendo se está
   pronto, rodando, falhou ou não foi verificado.
 - Pendências: cada uma com cerca de 30 palavras, o bastante para ele decidir
   sem abrir nada: a decisão, sua recomendação, o que muda para o usuário e o risco.
-  Nunca corte uma pendência para caber.
+  Nunca corte uma pendência para caber. Se houver pergunta, só uma, no fim.
 - Nunca dê como pronto o que ainda depende dele. Escreva "não sei" no que não souber.
 
 Depois de enviar, avance o `Visto até` em `local/estado.md`. É a única escrita

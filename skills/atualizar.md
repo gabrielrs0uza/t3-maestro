@@ -56,7 +56,9 @@ dois limites, mas não os de segurança.
 
 Tudo o que você diz ao dono sai no idioma de `local/config.md`, qualquer que seja
 o idioma das regras, do changelog ou dos arquivos. Resuma o que muda com as suas
-palavras; não cole o changelog nem o diff na conversa. Em rotina sem novidade,
+palavras, curto e simples, como em "Como escrever para o dono" do `AGENTS.md`;
+não cole o changelog nem o diff na conversa. A lista de arquivos e o caminho do
+diff aparecem só onde esta skill pede. Em rotina sem novidade,
 fique calado.
 
 ## O que fazer com o RESULTADO
@@ -69,7 +71,7 @@ A última linha diz o que aconteceu. Pode juntar vários itens separados por `;`
 | `novo-usuario` | Faça a "Primeira conversa". |
 | `sem-config` | Não é pessoa nova: há registro do maestro em `local/`, mas o `local/config.md` sumiu. Não faça a Primeira conversa. Mostre ao dono os backups listados e, com o ok dele, volte ao mais recente. |
 | `voltou A -> B (retomado)` | Uma volta interrompida terminou. Releia `AGENTS.md` e conte ao dono em uma linha. |
-| `atualizado A -> B` | Releia `AGENTS.md` inteiro e as skills que estiver usando, e registre a versão carregada. Diga "Regras em vigor: vB" e conte em até 7 tópicos o que mudou de fato, a partir de ARQUIVOS QUE MUDARAM, com as NOVIDADES como explicação. Destaque o que pede ação dele e diga como voltar. |
+| `atualizado A -> B` | Releia `AGENTS.md` inteiro e as skills que estiver usando, e registre a versão carregada. Diga "Regras em vigor: vB" e conte em até 5 linhas curtas o que mudou de fato, a partir de ARQUIVOS QUE MUDARAM, com as NOVIDADES como explicação. Destaque o que pede ação dele e diga como voltar. |
 | `migrado N -> M` | Faça o que cada `TAREFA:` pede, pela tabela abaixo, e conte ao dono em uma linha. |
 | `precisa-aceite vX` | Não atualize ainda. Leia `local/atualizacao-pendente.md` e mostre ao dono, em linguagem simples: o resumo do que muda, a lista de arquivos e o caminho do diff completo (`local/atualizacao-pendente.diff`), destacando o que mexe no bloco fixo, em aprovações ou em código. Faça uma pergunta só: "atualizo para vX?". Só com o sim dele rode `scripts/maestro.sh atualizar --aceitar vX`. O aceite vale para o commit e o diff mostrados; se a tag mudar, ele não vale. Pergunte uma vez por versão. |
 | `sem-rede` | Siga na versão atual, sem avisar. Tenta de novo na próxima vez. As migrações locais rodam mesmo assim. |

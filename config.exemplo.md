@@ -8,7 +8,10 @@ com o valor padrão. Para mudar depois, peça ao maestro ou edite o arquivo.
 - **Dono:** nome de quem usa este maestro.
 - **Idioma:** idioma de tudo o que o maestro diz ao dono, qualquer que seja o
   idioma das regras.
-- **Estilo:** curto, para celular, ou detalhado.
+- **Estilo:** controla o tamanho e o tom das mensagens. `curto` (padrão):
+  poucas linhas, em linguagem simples, bom para ler no celular. `detalhado`:
+  explica mais, sem jargão do mesmo jeito. Veja "Como escrever para o dono" no
+  `AGENTS.md`.
 - **Interface:** `visual` (desenhos, painéis e botões) ou `texto`.
 - **Costuma fazer:** programar, pesquisar, escrever, analisar dados.
 - **Executor padrão:** provedor e modelo.
