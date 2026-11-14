@@ -18,7 +18,8 @@ Dali em diante, tudo sai só no idioma escolhido: as outras perguntas, o resumo 
 que ficou combinado e cada resposta depois. As perguntas abaixo estão em
 português; faça o equivalente. Em linguagem simples e sem jargão, pergunte:
 
-1. Como a pessoa se chama e se prefere mensagens curtas ou detalhadas.
+1. Como a pessoa se chama e se prefere mensagens curtas ou detalhadas. Curtas é
+   o padrão; sem resposta, fica curto.
 2. Se prefere ver desenhos, painéis e botões (`visual`) ou só texto (`texto`).
 3. O que costuma fazer aqui: programar, pesquisar, escrever, analisar dados. Se
    produzir documentos, em que pasta guardá-los.
@@ -90,7 +91,7 @@ Se depois aparecer outro provedor, o maestro oferece a troca uma vez, como em
    Claude` ou `Claude, <modelo> · mesmo modelo, chat novo: só havia um modelo`.
 4. Crie as rotinas abaixo, conforme as respostas. A `T3 Atualização` é sempre
    criada.
-5. Mostre em poucas linhas o que ficou combinado, com o revisor escolhido e o
+5. Mostre em poucas linhas, em linguagem simples, o que ficou combinado, com o revisor escolhido e o
    motivo, como em "Escolher o revisor". Diga que tudo muda pedindo aqui e que
    este é o chat dele para as próximas semanas: não precisa abrir outro.
    Diga também que uma vez por dia você confere se há versão nova; que só

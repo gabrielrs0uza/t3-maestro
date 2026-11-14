@@ -6,7 +6,7 @@
 </picture>
 
 <p align="center">
-  <img alt="versão 2.0.0" src="https://img.shields.io/badge/vers%C3%A3o-2.0.0-8250df">
+  <img alt="versão 2.1.0" src="https://img.shields.io/badge/vers%C3%A3o-2.1.0-8250df">
   <img alt="licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-6e7781">
   <!-- Descomente depois do primeiro push, trocando <dono>/<repo> pelo caminho do repositório.
        CI: quando o workflow CI tiver rodado na main.
@@ -38,6 +38,8 @@ sobre isso está em [docs/idiomas.md](docs/idiomas.md).
 
 - **Um chat só.** Você conversa sempre com o maestro. Resultados, perguntas, erros
   e PRs chegam ali, com o suficiente para você decidir sem abrir os intérpretes.
+- **Mensagens curtas e simples.** O maestro escreve como uma pessoa falando com
+  outra: começa pela resposta, sem jargão, e faz no máximo uma pergunta por vez.
 - **Um intérprete por problema.** Cada frente de trabalho ganha o seu chat, numa
   cópia separada do repositório, e o maestro manda tudo o que ele precisa saber.
 - **Pedidos numerados.** Cada pedido seu ganha um número e fica anotado até ser

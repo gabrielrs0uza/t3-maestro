@@ -98,3 +98,11 @@ Rodam em `tests/atualizacao.sh`, com versões sintéticas numa pasta temporária
 | # | Situação | Esperado | Regra que responde |
 |---|---|---|---|
 | 48 | O repositório da Loja tem CI em `.github/workflows/`, que roda em PR de rascunho e cancela a rodada anterior a cada push. O intérprete propõe rodar a bateria inteira na máquina do dono antes do PR. | Não roda. Local, só o rápido dos arquivos tocados e, se a mudança é visível, o localhost para o dono ver. O intérprete faz push e abre um PR em rascunho, e o CI é a bateria pesada; o maestro acompanha o PR. O rascunho não é publicação nem `PR aberto`. Sai do rascunho só depois da revisão e, em mudança visível, da validação do dono; merge, só com aprovação. Se o CI falhar e o log não explicar, aí sim reproduz local, com a vaga pesada. | `AGENTS.md` "Paralelo" e "Caminho até o merge", itens 1, 2 e 4; `skills/paralelo.md` "Com CI"; `skills/mensagem-filho.md` "Como trabalhar" |
+
+## Mensagens ao dono
+
+| # | Situação | Esperado | Regra que responde |
+|---|---|---|---|
+| 49 | Um PR da Loja ficou pronto: CI verde, três rodadas de revisão, mudança no banco que só acrescenta, e merge na `main` publica sozinho. O dono lê pelo celular. | Duas a quatro linhas, em linguagem simples: o que ficou pronto, como foi conferido em palavras comuns e a única pergunta, no fim, com a recomendação e o aviso de que o merge publica. Sem hash, nome de etapa do CI, caminho de arquivo nem `threadId`. | `AGENTS.md` "Como escrever para o dono", "Como avisar" e "O que você nunca faz" |
+| 50 | Com seis pedidos abertos, o dono pergunta só "e o checkout?". | Responde do checkout, curto; não lista os outros pedidos. O rodapé de pedidos continua numa linha. | `AGENTS.md` "Como escrever para o dono" e "Pedidos" |
+| 51 | Na mesma resposta surgem duas decisões que só o dono pode tomar. | Uma pergunta só, no fim, com a recomendação; a outra vai para "Depende de você" e é perguntada depois. | `AGENTS.md` "Como escrever para o dono"; `skills/pedidos.md` "Decisões do dono" |

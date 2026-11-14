@@ -90,7 +90,9 @@ Agora: checkout novo em revisão; o dono quer o PR antes de sexta.
 ## Decisões do dono
 
 Pergunte uma vez, na resposta em que a decisão surgiu, com sua recomendação e o
-que acontece se ele não responder. Depois disso ela só aparece em "Depende de
+que acontece se ele não responder. Uma pergunta por mensagem, no fim, como em
+"Como escrever para o dono" do `AGENTS.md`; se surgirem duas, a outra entra em
+"Depende de você" e é perguntada depois. Depois disso ela só aparece em "Depende de
 você", no `ketchup`, no `painel` e no resumo; não repita "ainda em aberto" em
 outras respostas. Siga com o que não depende dela.
 

@@ -6,6 +6,48 @@ quem já usa. Formato inspirado em [Keep a Changelog](https://keepachangelog.com
 com versões no [SemVer](https://semver.org/): MAJOR muda o formato de `local/` ou
 remove algo, MINOR traz novidade, PATCH corrige.
 
+## [2.1.0] - 2026-11-14
+
+### O que muda para quem já usa
+
+1. Muda regra, por isso pede a sua confirmação ao atualizar ("atualizo para
+   v2.1.0?").
+2. O maestro passa a escrever curto e simples, como uma pessoa falando com outra:
+   começa pela resposta ou pela decisão, sem jargão, só o que mudou e no máximo
+   uma pergunta por mensagem.
+3. Nada muda no seu config. Quem quiser mensagens mais explicadas escreve
+   "Estilo: detalhado".
+
+### Adicionado
+
+- Seção "Como escrever para o dono" no `AGENTS.md`, fora do bloco fixo, valendo
+  para toda mensagem ao dono.
+- Cenários 49 a 51 em `docs/cenarios.md`, sobre o tamanho e o tom das mensagens.
+
+### Mudou
+
+- "Tudo volta para cá": repassar o suficiente para decidir, e não mais.
+- "Como avisar": uma linha curta, só do que mudou, em palavras simples; a falha
+  diz numa frase o que quebrou antes do erro exato.
+- "Pedidos": o "Anotei" fica numa linha só.
+- Skills alinhadas: `pedidos` (uma pergunta por mensagem), `ketchup`,
+  `atualizar` (resumo de versão em até 5 linhas curtas) e `primeira-conversa`
+  (curto é o padrão).
+- `config.exemplo.md`: "Estilo" controla o tamanho e o tom; o padrão é `curto`.
+
+### In English
+
+- New "Como escrever para o dono" (how to write to the owner) section in
+  `AGENTS.md`, outside the fixed block: plain language, like one person talking
+  to another; answer or decision first; only what changed; at most one question
+  per message, at the end, with a recommendation; one short verification mark
+  per status claim; no commit hashes, file paths, CI job names or internal IDs
+  unless asked or required by a rule.
+- "Tudo volta para cá", "Como avisar", "Pedidos" and the `pedidos`, `ketchup`,
+  `atualizar` and `primeira-conversa` skills now follow it. "Estilo" in the
+  config controls length and tone; the default is `curto` (short).
+- This version changes rules, so each copy asks its owner to confirm the update.
+
 ## [2.0.0] - 2026-11-13
 
 ### O que muda para quem já usa

@@ -6,7 +6,7 @@
 </picture>
 
 <p align="center">
-  <img alt="version 2.0.0" src="https://img.shields.io/badge/version-2.0.0-8250df">
+  <img alt="version 2.1.0" src="https://img.shields.io/badge/version-2.1.0-8250df">
   <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-6e7781">
   <!-- Uncomment after the first push, replacing <dono>/<repo> with the repository path.
        CI: once the CI workflow has run on main.
@@ -39,6 +39,8 @@ that are weighed in [docs/idiomas.md](docs/idiomas.md) (in Portuguese).
 - **One chat.** You always talk to the conductor. Results, questions, errors and
   pull requests land there, with enough context to decide without opening the
   performers.
+- **Short, plain messages.** The conductor writes like one person talking to
+  another: answer first, no jargon, and at most one question at a time.
 - **One performer per problem.** Each workstream gets its own chat, in a
   separate copy of the repository, and the conductor hands it everything it needs
   to know.
