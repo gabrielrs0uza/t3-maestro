@@ -41,8 +41,8 @@ com o valor padrão. Para mudar depois, peça ao maestro ou edite o arquivo.
 - **Vagas pesadas:** 1. Servidor de desenvolvimento, build, instalação, navegador
   de teste ou container, somando todos os chats. Meça antes de aumentar.
 - **Rodadas de revisão por PR:** 3, salvo outro número.
-- **Rodapé de pedidos:** `sim` para terminar cada resposta com os pedidos abertos,
-  ou `não`.
+- **Rodapé de pedidos:** `não`. Com `sim`, cada resposta termina com a contagem de
+  pedidos abertos; ligue só se o dono pedir acompanhamento detalhado.
 - **Pasta de provas:** onde guardar provas grandes antes de apagar uma worktree.
   Padrão: `local/provas`.
 - **Demo:** `nenhuma`, ou o projeto que tem uma versão no ar para outras pessoas

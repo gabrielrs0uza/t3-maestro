@@ -1,7 +1,9 @@
 # Pedidos: o registro do dono
 
-Use sempre que o dono pedir algo. O pedido é a unidade de acompanhamento; o chat
-intérprete é só quem executa. Só o maestro escreve neste registro.
+Use quando o dono pedir algo que precisa de acompanhamento. O pedido é a unidade
+de acompanhamento; o chat intérprete é só quem executa. Só o maestro escreve neste
+registro. O registro é memória interna: serve para retomar o trabalho entre
+conversas, não para aparecer nas respostas.
 
 ## Onde fica
 
@@ -15,8 +17,8 @@ intérprete é só quem executa. Só o maestro escreve neste registro.
 
 Tudo o que vai para o dono sai no idioma de `local/config.md`: "Anotei", "já
 estava anotado", o rodapé, o bloco "Desde a última vez", os nomes dos estados e
-as marcas de verificação. As frases deste arquivo são exemplos em português; diga
-o equivalente. Em inglês, por exemplo: "Noted: LJ-13, LJ-14." e "Open: 6 (2
+as marcas de verificação, quando aparecem. As frases deste arquivo são exemplos
+em português; diga o equivalente. Em inglês, por exemplo: "Noted: LJ-13, LJ-14." e "Open: 6 (2
 waiting on you)." Os IDs não mudam.
 
 Nos arquivos de `local/`, os estados, os títulos, os nomes de coluna e as linhas
@@ -52,12 +54,17 @@ Agora: checkout novo em revisão; o dono quer o PR antes de sexta.
 
 ## Anotar
 
-1. Quebre a mensagem do dono em entregas. Uma entrega é um pedido. Uma pergunta
-   e uma mudança na mesma frase viram dois pedidos ligados ("ver LJ-13").
+1. Anote só o que precisa de acompanhamento: entregas, decisões, aprovações e
+   restrições, e ordens de pausar ou parar. Pergunta pontual, comentário,
+   confirmação ou explicação que você responde na hora não vira pedido. Quebre
+   em entregas o que sobrar: uma entrega é um pedido.
 2. Antes de criar um ID, procure na pauta um pedido aberto com o mesmo sentido. Se
-   houver, use o dele e diga "já estava anotado como LJ-9".
-3. Anote antes de despachar. Comece a resposta com "Anotei: LJ-13, LJ-14.", no
-   idioma do dono. Se nada novo foi anotado, não escreva essa linha.
+   houver, use o dele. Ajuste, correção ou nova etapa da mesma entrega atualiza o
+   mesmo pedido, sem ID novo.
+3. Anote antes de despachar. Por padrão, não mostre ao dono "Anotei", IDs ou
+   estados: diga em palavras simples o que vai acontecer. Mostre só se ele pedir
+   acompanhamento detalhado ou se o ID for indispensável para separar duas coisas
+   numa decisão real; aí, uma linha como "Anotei: LJ-13, LJ-14.", no idioma dele.
 4. A coluna "Pedido" resume a fala do dono sem mudar o sentido. Se ele mudar o
    pedido, reescreva a célula e anote a versão anterior no diário. Nunca apague
    um pedido: descarte com motivo.
@@ -104,7 +111,9 @@ parar ou desligar vale até o próprio dono revogar.
 `local/estado.md` guarda `Visto até:`, a hora do último resumo entregue ao dono.
 O bloco mostra só as linhas do diário depois dessa hora, agrupadas por projeto, e
 o cursor só avança depois que a resposta foi enviada. Na dúvida se o dono viu,
-repita com os IDs: é melhor repetir que perder um pedido.
+repita: é melhor repetir que perder um pedido. O exemplo abaixo traz IDs e
+contagens; ao dono, só se ele pediu acompanhamento detalhado. No resto, diga em
+palavras simples.
 
 ```
 Desde 16:10
@@ -115,9 +124,10 @@ Parado há mais de 2 h: LJ-15
 
 ## Rodapé
 
-Se houver pedidos abertos, toda resposta ao dono termina com uma linha curta, no
-idioma dele: "Abertos: 6 (2 esperando você)." Não vale para rotina sem novidade.
-O dono desliga em `local/config.md` ("Rodapé de pedidos: não").
+Desligado por padrão. Só com "Rodapé de pedidos: sim" em `local/config.md`, que o
+dono liga quando quer acompanhamento detalhado, e havendo pedidos abertos, toda
+resposta ao dono termina com uma linha curta, no idioma dele: "Abertos: 6 (2
+esperando você)." Não vale para rotina sem novidade.
 
 ## Parados e órfãos
 

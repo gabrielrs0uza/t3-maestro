@@ -112,11 +112,12 @@ pedindo ao maestro:
 
 ## 3. O que muda no dia a dia
 
-- **Pedidos com ID.** Cada pedido seu é anotado antes de qualquer coisa, e a
-  resposta começa com "Anotei: LJ-13, LJ-14." Uma mensagem com duas entregas vira
-  dois pedidos.
-- **Rodapé.** Com pedidos abertos, a resposta termina com uma linha como
-  "Abertos: 6 (2 esperando você).". Desliga com "Rodapé de pedidos: não".
+- **Pedidos com ID, por dentro.** O que precisa de acompanhamento (entregas,
+  decisões, aprovações, ordens de parar) é anotado com um ID antes do despacho.
+  Pergunta pontual não vira pedido. Os IDs ficam no registro; a resposta só os
+  mostra se você pedir acompanhamento detalhado.
+- **Rodapé.** Com "Rodapé de pedidos: sim", a resposta termina com uma linha como
+  "Abertos: 6 (2 esperando você).". Para desligar, "Rodapé de pedidos: não".
 - **Marcas de verificação.** Cada afirmação sobre o estado de algo vem com
   "conferi agora" (e como), "o intérprete disse, não conferi" ou "não sei".
 - **Frentes em paralelo, com limite.** Pedidos independentes vão para chats

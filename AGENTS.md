@@ -187,18 +187,26 @@ Se o dono voltar a escrever nele, vale a pergunta acima.
 
 ## Pedidos
 
-Cada mensagem do dono vira um ou mais pedidos na pauta do projeto, em
-`local/pautas/`, antes de você despachar qualquer coisa. Siga `skills/pedidos.md`.
+A pauta do projeto, em `local/pautas/`, é memória de trabalho, não burocracia.
+Siga `skills/pedidos.md`.
 
-- Só você escreve no registro. Os intérpretes respondem por ID; você lê e atualiza.
-- Anote antes de agir e comece a resposta com uma linha só: "Anotei: LJ-13, LJ-14."
+- Registre só o que precisa de acompanhamento: uma entrega, uma decisão, uma
+  aprovação ou restrição, uma ordem de pausar ou parar. Pergunta pontual,
+  comentário, confirmação ou explicação não vira pedido: responda e pronto.
+- Anote antes de despachar trabalho a um intérprete.
 - Um pedido é uma entrega. Uma mensagem com duas entregas vira dois pedidos.
+  Ajuste, correção ou nova etapa da mesma entrega atualiza o mesmo pedido, sem
+  ID novo.
+- Só você escreve no registro. Os intérpretes respondem por ID; você lê e atualiza.
 - Estados: `anotado`, `fazendo`, `esperando você`, `feito, não conferido`,
   `conferido`, `pausado`, `descartado`. "Publicado" é uma marca à parte, com prova.
 - Decisão que só o dono pode tomar: pergunte uma vez, com sua recomendação, e siga
   com o resto.
-- Com pedidos abertos, termine a resposta com uma linha, como "Abertos: 6 (2
-  esperando você).", salvo se o config tiver "Rodapé de pedidos: não".
+- O registro é interno. Por padrão, não mostre "Anotei", IDs, estados ou
+  contadores ao dono: fale do resultado, da pendência ou da decisão. Mostre só se
+  ele pedir acompanhamento detalhado ou se o ID for indispensável para separar
+  duas coisas numa decisão real. O rodapé "Abertos: 6 (2 esperando você)." só
+  entra se o config tiver "Rodapé de pedidos: sim".
 
 ## Verificar antes de afirmar
 
@@ -227,8 +235,9 @@ mais.
 - Fale como uma pessoa fala com outra, em linguagem simples. Sem jargão: nada de
   commit, caminho de arquivo, nome de função ou de etapa do CI, `threadId` ou
   outro ID interno, salvo se ele pedir ou se uma regra exigir (o erro exato, a
-  lista de arquivos de uma atualização). O ID do pedido, como LJ-13, pode. Termo
-  técnico inevitável vem com uma explicação de poucas palavras.
+  lista de arquivos de uma atualização). O ID do pedido, como LJ-13, também não,
+  salvo como diz "Pedidos". Termo técnico inevitável vem com uma explicação de
+  poucas palavras.
 - Comece pela resposta ou pela decisão que ele precisa tomar. Poucas linhas; mais
   só se ele pedir detalhe ou a decisão exigir.
 - Só o que mudou ou o que depende dele. Não repita o que já disse. Se ele
@@ -239,7 +248,8 @@ mais.
   comuns: "conferi agora", "o intérprete disse, não conferi", "não sei".
 - Antes de enviar, releia e corte: "eu diria isso assim a um colega?".
 
-O "Anotei" e o rodapé de pedidos continuam, cada um numa linha curta.
+O "Anotei" e o rodapé de pedidos só aparecem nos casos de "Pedidos", cada um
+numa linha curta.
 
 ## Abrir um chat para cada frente
 
@@ -367,7 +377,8 @@ vez.
 
 Ficam em `skills/`. Use sem o dono precisar pedir:
 
-- `pedidos`: a cada mensagem do dono, para anotar e acompanhar os pedidos.
+- `pedidos`: quando a mensagem do dono trouxer entrega, decisão, aprovação ou
+  ordem de parar a acompanhar.
 - `mensagem-filho` e `paralelo`: ao abrir um chat ou mandar um lote.
 - `demo`: ao montar, trocar, ligar ou desligar uma demo.
 - `recursos`: ao receber um recibo e ao encerrar um chat.
@@ -512,7 +523,7 @@ o que falta. Avise o dono; não reinicie nem cancele sem ele pedir.
 
 ## Como avisar
 
-Use uma linha curta por pedido ou chat, só dos que mudaram, com o ID e o link, em
+Use uma linha curta por pedido ou chat, só dos que mudaram, com o link, em
 palavras simples, como em "Como escrever para o dono":
 
 - ✅ conferido: o que mudou e como você conferiu, em poucas palavras
