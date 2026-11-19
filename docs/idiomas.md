@@ -1,7 +1,7 @@
 # Em que idioma escrever as regras
 
 Premissa: tudo o que o maestro diz ao dono já sai no idioma do campo **Idioma** de
-`local/config.md`, inclusive os rótulos que as regras usam ("Anotei", "conferi
+`local/config.md`, inclusive os rótulos que as regras usam ("conferi
 agora", os estados dos pedidos). A apresentação já está em dois idiomas
 (`README.md` em inglês, `README.pt-BR.md` em português). A decisão em aberto é só
 uma: em que idioma ficam escritas as **regras**, `AGENTS.md` e `skills/`, que
@@ -28,7 +28,7 @@ São nomes que os scripts e as pessoas já guardam. Mudá-los é mudar formato:
   "Origem das atualizações", "Exigir tag assinada", "Abrir chats sem perguntar", e
   valores como `sim`, `não`, `estável`. Trocar exige migração e script novo.
 - **`local/versao.md`** ("Base", "Formato local", "Commit aplicado", "Última
-  checagem") e as colunas de `local/estado.md` ("Lido até", "Último aviso").
+  checagem") e as colunas das pautas ("Estado", "Chat", "Prova").
 - **Rotinas já criadas:** o `prompt` de cada uma cita uma seção do `AGENTS.md`
   pelo título ("siga a seção "Rotina" do AGENTS.md"). Se o título mudar, a rotina
   de quem já usa aponta para uma seção que não existe.

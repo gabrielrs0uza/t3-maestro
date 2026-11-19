@@ -19,6 +19,10 @@ longas="$(awk '
   v != "" && NF { linhas++ }
   END { if (v != "") print v, itens, linhas }' CHANGELOG.md | awk '$2 > 5 || $3 > 14 { print $1 }')"
 [ -z "$longas" ] || erro "CHANGELOG.md: versões longas demais (até 5 itens e 14 linhas): $(echo $longas)"
+# Orçamento de contexto, como o do T3 Code: as regras não crescem sem alguém
+# decidir. Subir estes números é uma decisão do PR, escrita no CHANGELOG.
+[ "$(wc -l < AGENTS.md)" -le 450 ] || erro "AGENTS.md passou de 450 linhas; enxugue ou suba o teto aqui, com motivo"
+[ "$(cat skills/*.md | wc -l)" -le 1400 ] || erro "skills/ passou de 1400 linhas; enxugue ou suba o teto aqui, com motivo"
 for leia in README*.md; do
   grep -qE "badge/(version|vers%C3%A3o)-$versao-" "$leia" || erro "o selo de versão de $leia não diz $versao"
 done

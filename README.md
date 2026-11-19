@@ -44,9 +44,11 @@ that are weighed in [docs/idiomas.md](docs/idiomas.md) (in Portuguese).
 - **One performer per problem.** Each workstream gets its own chat, in a
   separate copy of the repository, and the conductor hands it everything it needs
   to know.
-- **Numbered requests.** Every request you make gets a number and stays on record
-  until it is verified or dropped. The conductor tells you what it checked itself
-  and what it only heard.
+- **Nothing gets lost.** Every request stays on record until it is verified or
+  dropped, without ceremony in the replies. The conductor tells you what it
+  checked itself and what it only heard.
+- **Little noise.** Chats report back when they finish. Beyond that, at most one
+  summary a day, and nothing when there's no news.
 - **Parallel, within limits.** Independent work runs at the same time, with a cap
   on chats and one heavy task at a time on your machine.
 - **Approvals that never loosen.** Merge, deploy, production data and deletions

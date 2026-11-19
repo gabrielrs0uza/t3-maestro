@@ -7,7 +7,8 @@ altere nada.
 ## Levantar
 
 1. Leia `local/estado.md`, as pautas com pedidos abertos e o diário depois de
-   `Visto até`. Leia cada chat que não está `encerrado` só a partir do `Lido até`.
+   `Visto até`. Leia os chats dos pedidos abertos a partir do ponto guardado na
+   retomada.
 2. Confira o estado real de cada PR, CI e deploy citado.
 3. Separe o que só ele pode decidir: escolha de produto, aprovação, ação
    irreversível ou acesso que falta. Inclua pendência antiga ainda sem resposta.

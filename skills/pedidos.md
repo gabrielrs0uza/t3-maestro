@@ -15,11 +15,10 @@ conversas, não para aparecer nas respostas.
 
 ## Idioma
 
-Tudo o que vai para o dono sai no idioma de `local/config.md`: "Anotei", "já
-estava anotado", o rodapé, o bloco "Desde a última vez", os nomes dos estados e
-as marcas de verificação, quando aparecem. As frases deste arquivo são exemplos
-em português; diga o equivalente. Em inglês, por exemplo: "Noted: LJ-13, LJ-14." e "Open: 6 (2
-waiting on you)." Os IDs não mudam.
+Tudo o que vai para o dono sai no idioma de `local/config.md`, inclusive o bloco
+"Desde a última vez" e, quando aparecem, os estados e as marcas de verificação.
+As frases deste arquivo são exemplos em português; diga o equivalente. Os IDs não
+mudam.
 
 Nos arquivos de `local/`, os estados, os títulos, os nomes de coluna e as linhas
 `Titular:`, `Regras carregadas:` e `Visto até:` ficam escritos como aqui, porque as
@@ -38,11 +37,16 @@ Agora: checkout novo em revisão; o dono quer o PR antes de sexta.
 
 ## Pedidos
 
-| ID | Pedido | Desde | Estado | Onde | Prova | Publicado | Mudou em |
-|---|---|---|---|---|---|---|---|
-| LJ-12 | Resposta aparece abaixo da pergunta | 13/11 14:50 | conferido | Fila A | commit 28dd0eb, print lido | não | 13/11 16:10 |
-| LJ-13 | Visão geral da fila | 13/11 15:02 | fazendo | Fila B | | | 13/11 17:40 |
-| LJ-14 | Dica de como convidar pessoas (ver LJ-13) | 13/11 15:02 | anotado | | | | 13/11 15:02 |
+| ID | Pedido | Estado | Chat | Prova | Mudou em |
+|---|---|---|---|---|---|
+| LJ-12 | Resposta aparece abaixo da pergunta | conferido, publicado | Fila A · <link> · <threadId> | commit 28dd0eb, print lido | 13/11 16:10 |
+| LJ-13 | Visão geral da fila | fazendo | Fila B · <link> · <threadId> | | 13/11 17:40 |
+| LJ-14 | Dica de como convidar pessoas (ver LJ-13) | anotado | | | 13/11 15:02 |
+
+A coluna "Chat" guarda o link e o `threadId` de quem executa: é assim que você
+manda ordens e lê o chat, sem uma tabela de chats à parte. Pautas antigas, com as
+colunas "Desde", "Onde" e "Publicado", continuam valendo; ao reescrever, use este
+modelo.
 
 ## Decisões e autorizações
 
@@ -61,10 +65,9 @@ Agora: checkout novo em revisão; o dono quer o PR antes de sexta.
 2. Antes de criar um ID, procure na pauta um pedido aberto com o mesmo sentido. Se
    houver, use o dele. Ajuste, correção ou nova etapa da mesma entrega atualiza o
    mesmo pedido, sem ID novo.
-3. Anote antes de despachar. Por padrão, não mostre ao dono "Anotei", IDs ou
-   estados: diga em palavras simples o que vai acontecer. Mostre só se ele pedir
-   acompanhamento detalhado ou se o ID for indispensável para separar duas coisas
-   numa decisão real; aí, uma linha como "Anotei: LJ-13, LJ-14.", no idioma dele.
+3. Anote antes de despachar, sem anunciar: ao dono, diga em palavras simples o
+   que vai acontecer. IDs e estados só se ele pedir acompanhamento detalhado ou se
+   o ID for indispensável para separar duas coisas numa decisão.
 4. A coluna "Pedido" resume a fala do dono sem mudar o sentido. Se ele mudar o
    pedido, reescreva a célula e anote a versão anterior no diário. Nunca apague
    um pedido: descarte com motivo.
@@ -122,16 +125,15 @@ Site: 1 conferido (ST-3)
 Parado há mais de 2 h: LJ-15
 ```
 
-## Rodapé
+## Contagens
 
-Desligado por padrão. Só com "Rodapé de pedidos: sim" em `local/config.md`, que o
-dono liga quando quer acompanhamento detalhado, e havendo pedidos abertos, toda
-resposta ao dono termina com uma linha curta, no idioma dele: "Abertos: 6 (2
-esperando você)." Não vale para rotina sem novidade.
+Contagem de pedidos abertos só aparece no resumo diário e no `painel`, nunca no
+fim de cada resposta. O campo antigo "Rodapé de pedidos", do config, não tem mais
+efeito.
 
 ## Parados e órfãos
 
-A rotina procura:
+O resumo diário procura, e a `T3 Monitor` também, se o dono a ligou:
 
 - **Parados:** `anotado` há mais de 2 horas sem chat; `fazendo` há mais de 45
   minutos sem atividade no chat.
@@ -144,7 +146,10 @@ do chat.
 ## O índice: `local/estado.md`
 
 Reescrito inteiro a cada mudança, nunca acrescentado. Teto: 120 linhas, 16 KB e
-200 caracteres por célula. Modelo fictício:
+200 caracteres por célula. Não há tabela de chats: o estado de cada chat está na
+barra lateral do T3, e o link de cada um, na pauta. Um índice antigo com "Chats
+vivos" perde essa seção na próxima reescrita, depois de passar para a pauta o
+link e o `threadId` de cada pedido aberto. Modelo fictício:
 
 ```
 # Estado
@@ -162,11 +167,6 @@ Atualizado: 13/11 18:05 · Visto até: 13/11 16:10
 | Loja | local/pautas/loja.md | 6 | 1 |
 | casa | local/pautas/casa.md | 1 | 0 |
 
-## Chats vivos
-| Título | Chat | threadId | Projeto | Executor | Estado | Pedidos | PR | Lido até | Último aviso |
-|---|---|---|---|---|---|---|---|---|---|
-| Fila B | <link> | <id> | Loja | Codex | rodando | LJ-13, LJ-14 | | 212 | 17:40 começou os testes |
-
 ## Vaga pesada
 - Fila B: servidor de desenvolvimento desde 17:20, esperando o dono validar
 - Na fila: Site A (instalação)
@@ -175,8 +175,7 @@ Atualizado: 13/11 18:05 · Visto até: 13/11 16:10
 - Loja: commit a1b2c3d, porta 4100, ligada; saúde conferida 17:55
 
 ## Rotinas
-- T3 Monitor (<id>): ligada · T3 Resumo (<id>): 18:00 nos dias úteis
-- T3 Atualização (<id>): 08:00 todo dia
+- T3 Atualização (<id>): 08:00 todo dia · T3 Resumo (<id>): 18:00 nos dias úteis
 ```
 
 As duas primeiras linhas nunca saem. `Titular:` diz qual chat é o maestro, como em
@@ -195,7 +194,7 @@ Reescrita, nunca acumulada, com no máximo 60 linhas:
 
 - o que está em curso e o próximo passo de cada frente;
 - decisões e autorizações vigentes, inclusive ordens de parar ou desligar;
-- cursores (`Visto até`, `Lido até` de cada chat) e rotinas ligadas.
+- cursores (`Visto até` e até onde você leu cada chat) e rotinas ligadas.
 
 Reescreva em momento calmo e antes de tarefa longa. Depois que a conversa for
 resumida, releia o `AGENTS.md` inteiro, o `VERSION`, `local/config.md`,
@@ -204,7 +203,7 @@ resumida, releia o `AGENTS.md` inteiro, o `VERSION`, `local/config.md`,
 
 ## Ler os intérpretes
 
-- `t3_thread_read` com `afterPosition` igual ao `Lido até`, `limit` de até 10 e
-  `maxCharsPerItem` de até 4000. Guarde o `nextPosition` como novo `Lido até`.
+- `t3_thread_read` com `afterPosition` igual ao ponto guardado na retomada,
+  `limit` de até 10 e `maxCharsPerItem` de até 4000. Guarde o `nextPosition`.
 - Texto cortado: continue com `itemId` e `textOffset` só se precisar dele.
 - O resultado inteiro só é lido para repassar ao dono ou conferir a prova.

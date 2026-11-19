@@ -29,16 +29,18 @@ português; faça o equivalente. Em linguagem simples e sem jargão, pergunte:
 5. Se você pode abrir chats sozinho quando ela pedir algo novo e independente.
    Recomende `sim`; com `não`, você pergunta antes de cada lote.
 6. O que nunca pode acontecer sem aprovação, além das regras fixas.
-7. Se quer os chats acompanhados de tempos em tempos, resumo diário (em que
-   horário) e a faxina semanal, que só relata.
+7. Em que horário quer o resumo diário (18:00, se não disser). Diga que os
+   chats avisam sozinhos quando terminam, e que vigia de tempos em tempos e
+   faxina semanal existem, desligados, se um dia ele quiser.
 
-Só para quem programa, pergunte depois: em quais repositórios merge já publica, se
-quer abrir chats a partir do Linear e se mantém uma demo no ar para outras pessoas.
+Só para quem programa, pergunte depois: em quais repositórios merge já publica e
+se mantém uma demo no ar para outras pessoas. Entrada pelo Linear só se ele
+mencionar.
 Se os repositórios têm CI, você não pergunta: confere sozinho ao abrir cada chat de
 código e só pergunta quando não achar, como em `paralelo.md`, "Com CI".
 
 Não pergunte o que tem padrão bom: revisor, orçamento, rodadas de revisão,
-rodapé, atualização automática e faxina automática ficam no padrão de
+atualização automática e faxina automática ficam no padrão de
 `config.exemplo.md`.
 
 ## Escolher o revisor
@@ -89,8 +91,8 @@ Se depois aparecer outro provedor, o maestro oferece a troca uma vez, como em
    provedor, o modelo e o motivo da escolha, como `Codex, <modelo> · outro
    provedor`, `Claude, <modelo> · mesmo provedor, outro modelo: só havia
    Claude` ou `Claude, <modelo> · mesmo modelo, chat novo: só havia um modelo`.
-4. Crie as rotinas abaixo, conforme as respostas. A `T3 Atualização` é sempre
-   criada.
+4. Crie as rotinas abaixo: `T3 Atualização` sempre, `T3 Resumo` salvo se ele
+   disse "não quero". As outras só se ele pedir.
 5. Mostre em poucas linhas, em linguagem simples, o que ficou combinado, com o revisor escolhido e o
    motivo, como em "Escolher o revisor". Diga que tudo muda pedindo aqui e que
    este é o chat dele para as próximas semanas: não precisa abrir outro.
@@ -107,7 +109,10 @@ depois que nenhuma demo morar em worktree de chat (veja `recursos.md`).
 Use `schedule_task` com `bindToCurrentThread: true`, depois de
 `list_scheduled_tasks`, para não duplicar. Toda rotina fica presa a este chat, o
 titular. Os nomes e os textos de `prompt` são fixos: rotinas antigas continuam
-funcionando depois de cada atualização.
+funcionando depois de cada atualização. O padrão são no máximo duas mensagens
+programadas por dia, e nenhuma quando não há novidade.
+
+Padrão:
 
 - `T3 Atualização`, sempre, todo dia:
   `{ "type": "fixed_time", "timeOfDay": "08:00" }`, sem `weekdays`, com o
@@ -115,16 +120,19 @@ funcionando depois de cada atualização.
   É ela que confere as versões novas sem depender de chat novo. Quem já usa o
   maestro ganha esta rotina pela atualização, com o mesmo nome, horário e
   `prompt`.
-- `T3 Monitor`, se ele quiser os chats acompanhados, com `enabled: false` até
-  haver chat em andamento: `{ "type": "interval", "everyMs": 1800000 }`, com o
-  `prompt` `Rotina de monitoramento: siga a seção "Rotina" do AGENTS.md.`
-- `T3 Resumo`, se ele quiser, no horário do config:
+- `T3 Resumo`, no horário do config (18:00 por padrão):
   `{ "type": "fixed_time", "timeOfDay": "<hora>", "weekdays": [1, 2, 3, 4, 5] }`,
   com o `prompt` `Resumo diário: siga a seção "Resumo diário" do AGENTS.md.`
-- `T3 Faxina`, se ele quiser, só relatório:
+
+Opcionais, só se o dono pedir:
+
+- `T3 Monitor`, a rede de segurança para chat que esquece de avisar:
+  `{ "type": "interval", "everyMs": 1800000 }`, com o
+  `prompt` `Rotina de monitoramento: siga a seção "Rotina" do AGENTS.md.`
+- `T3 Faxina`, só relatório:
   `{ "type": "fixed_time", "timeOfDay": "09:00", "weekdays": [1] }`, com o
   `prompt` `Faxina: siga a seção "Faxina" do AGENTS.md.`
-- `T3 Entrada`, só se o config indicar uma etiqueta do Linear:
+- `T3 Entrada`, com uma etiqueta do Linear no config:
   `{ "type": "fixed_time", "timeOfDay": "09:00", "weekdays": [1, 2, 3, 4, 5] }`,
   com o `prompt` `Entrada pelo Linear: siga a seção "Entrada pelo Linear" do AGENTS.md.`
 

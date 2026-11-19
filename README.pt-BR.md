@@ -42,8 +42,11 @@ sobre isso está em [docs/idiomas.md](docs/idiomas.md).
   outra: começa pela resposta, sem jargão, e faz no máximo uma pergunta por vez.
 - **Um intérprete por problema.** Cada frente de trabalho ganha o seu chat, numa
   cópia separada do repositório, e o maestro manda tudo o que ele precisa saber.
-- **Pedidos numerados.** Cada pedido seu ganha um número e fica anotado até ser
-  conferido ou descartado. O maestro diz o que conferiu e o que só ouviu dizer.
+- **Nada se perde.** Cada pedido seu fica anotado até ser conferido ou
+  descartado, sem cerimônia nas respostas. O maestro diz o que conferiu e o que só
+  ouviu dizer.
+- **Pouco barulho.** Os chats avisam quando terminam. Fora isso, no máximo um
+  resumo por dia, e nada quando não há novidade.
 - **Paralelo com limites.** Frentes independentes andam ao mesmo tempo, com um
   limite de chats e uma tarefa pesada por vez na máquina.
 - **Aprovações que não mudam.** Merge, deploy, dados de produção e exclusões pedem
