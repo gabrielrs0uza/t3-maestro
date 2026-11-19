@@ -26,9 +26,10 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 - Versões mais lentas: o número só muda quando sai uma versão, no máximo uma por
   semana, com a regra acima. Este arquivo ficou curto e só em português.
-- Menos mensagens: as rotinas padrão são só a atualização diária e o resumo das
-  18:00, e nenhuma escreve sem novidade. Vigia de 30 minutos, faxina e Linear
-  viram opcionais, desligados; para religar, peça ao maestro.
+- Menos mensagens: em instalação nova, as rotinas são só a atualização diária e
+  o resumo das 18:00, e nenhuma escreve sem novidade. Quem já usa fica com as
+  rotinas que tem; o maestro pergunta uma vez se quer desligar vigia, faxina ou
+  Linear, que deixaram de ser padrão.
 - Sem cerimônia: nada de "Anotei" nem rodapé de pedidos nas respostas. O índice
   perde a tabela de chats, que a barra lateral do T3 já mostra.
 - Regras mais curtas: o `AGENTS.md` foi de 590 para cerca de 440 linhas, sem

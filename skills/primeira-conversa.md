@@ -110,7 +110,9 @@ Use `schedule_task` com `bindToCurrentThread: true`, depois de
 `list_scheduled_tasks`, para não duplicar. Toda rotina fica presa a este chat, o
 titular. Os nomes e os textos de `prompt` são fixos: rotinas antigas continuam
 funcionando depois de cada atualização. O padrão são no máximo duas mensagens
-programadas por dia, e nenhuma quando não há novidade.
+programadas por dia, e nenhuma quando não há novidade. Esta lista vale para
+instalação nova; quem já usa mantém as rotinas que tem, como em `atualizar.md`,
+"Rotinas de quem já usa".
 
 Padrão:
 
