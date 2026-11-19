@@ -6,7 +6,7 @@
 </picture>
 
 <p align="center">
-  <img alt="versão 2.1.0" src="https://img.shields.io/badge/vers%C3%A3o-2.1.0-8250df">
+  <img alt="versão 2.2.0" src="https://img.shields.io/badge/vers%C3%A3o-2.2.0-8250df">
   <img alt="licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-6e7781">
   <!-- Descomente depois do primeiro push, trocando <dono>/<repo> pelo caminho do repositório.
        CI: quando o workflow CI tiver rodado na main.

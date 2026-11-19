@@ -24,16 +24,20 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 ## Próxima versão
 
+## [2.2.0] - 2026-11-19 · Menos mensagens
+
+O maestro fala menos, sem cerimônia, e as versões passam a sair mais devagar.
+
+- Muda regra: pede o seu ok ao atualizar.
+- Suas rotinas continuam como estão; o maestro pergunta uma vez se quer desligar
+  vigia, faxina ou Linear, que deixaram de ser padrão. Instalação nova fica só com
+  a atualização diária e o resumo das 18:00, calados quando não há novidade.
+- Sem "Anotei" nem rodapé de pedidos nas respostas; o índice perde a tabela de
+  chats, que a barra lateral do T3 já mostra.
 - Versões mais lentas: o número só muda quando sai uma versão, no máximo uma por
-  semana, com a regra acima. Este arquivo ficou curto e só em português.
-- Menos mensagens: em instalação nova, as rotinas são só a atualização diária e
-  o resumo das 18:00, e nenhuma escreve sem novidade. Quem já usa fica com as
-  rotinas que tem; o maestro pergunta uma vez se quer desligar vigia, faxina ou
-  Linear, que deixaram de ser padrão.
-- Sem cerimônia: nada de "Anotei" nem rodapé de pedidos nas respostas. O índice
-  perde a tabela de chats, que a barra lateral do T3 já mostra.
-- Regras mais curtas: o `AGENTS.md` foi de 590 para cerca de 440 linhas, sem
-  mexer nas travas.
+  semana.
+- Regras mais curtas: o `AGENTS.md` foi de 590 para 442 linhas, sem mexer nas
+  travas.
 
 ## [2.1.0] - 2026-11-14 · Mensagens curtas
 
