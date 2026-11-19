@@ -18,15 +18,17 @@ próprias palavras.
 - A tag é sempre `vX.Y.Z`, igual ao `VERSION`: é o único formato que as cópias
   instaladas aceitam.
 
-Cada versão tem uma frase do que muda e, no máximo, cinco itens curtos. O que pede
-ação de quem já usa vem primeiro. Detalhe técnico fica nos PRs e em `docs/`.
+Cada versão tem um título curto, uma frase do que muda e, no máximo, cinco itens,
+escritos pelo que a pessoa ganha. O que pede ação de quem já usa vem primeiro; se
+um padrão mudou, diga como voltar. Detalhe técnico fica nos PRs e em `docs/`. Por
+quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 ## Próxima versão
 
 - Versões mais lentas: o número só muda quando sai uma versão, no máximo uma por
   semana, com a regra acima. Este arquivo ficou curto e só em português.
 
-## [2.1.0] - 2026-11-14
+## [2.1.0] - 2026-11-14 · Mensagens curtas
 
 O maestro passa a escrever curto e simples: começa pela resposta, sem jargão, só
 o que mudou e no máximo uma pergunta por mensagem.
@@ -34,7 +36,7 @@ o que mudou e no máximo uma pergunta por mensagem.
 - Muda regra: pede o seu ok ao atualizar.
 - Nada muda no seu config. Para mensagens mais explicadas, "Estilo: detalhado".
 
-## [2.0.0] - 2026-11-13
+## [2.0.0] - 2026-11-13 · Atualização sozinha
 
 Primeira versão com número e atualização sozinha.
 
