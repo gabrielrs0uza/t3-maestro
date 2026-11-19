@@ -6,17 +6,16 @@ próprias palavras.
 
 ## Como os números mudam
 
-- O número só muda quando sai uma versão para as cópias. Merge na `main` não
-  muda: o que entra fica em "Próxima versão", sempre no topo, até sair.
-- Sai no máximo uma versão por semana, juntando o que se acumulou.
-- **X** (2.x → 3.0): a pessoa precisa fazer algo à mão, ou `local/` muda de
-  formato de um jeito que a migração não resolve sozinha.
-- **Y** (2.1 → 2.2): muda o que o maestro faz (regra, skill, rotina, script ou
-  migração). Pede o ok do dono ao atualizar.
-- **Z** (2.1.0 → 2.1.1): só conserto de algo quebrado na versão anterior.
-- Não muda o número: README, `docs/`, testes, CI e ajuste de texto sem efeito.
-- A tag é sempre `vX.Y.Z`, igual ao `VERSION`: é o único formato que as cópias
-  instaladas aceitam.
+- Muda só quando sai uma versão, no máximo uma por semana. Merge na `main` não
+  muda: o que entra espera em "Próxima versão", sempre no topo.
+- **X** (3.0): a pessoa precisa agir à mão, ou `local/` muda sem migração automática.
+- **Y** (2.2): comportamento novo ou diferente. Ex.: o resumo passa a citar chats parados.
+- **Z** (2.1.1): conserto é sempre Z, mesmo tocando script, regra ou skill, se não
+  muda o que o maestro faz quando tudo funciona. Ex.: o atualizador falhava com
+  espaço no caminho.
+- Não muda o número: README, `docs/`, testes, CI e texto sem efeito.
+- Tag sempre `vX.Y.Z`, igual ao `VERSION`: o único formato que as cópias aceitam.
+- Toda versão que não for só documentação pede o ok do dono ao atualizar.
 
 Cada versão tem um título curto, uma frase do que muda e, no máximo, cinco itens,
 escritos pelo que a pessoa ganha. O que pede ação de quem já usa vem primeiro; se
