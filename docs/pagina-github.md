@@ -71,14 +71,13 @@ usados: a documentação mora no próprio repositório. Deixe **Issues** ligado,
 
 ## Releases
 
-Depois do merge na `main` e da tag `v2.0.0`, crie a release a partir da tag, com o
-título "T3 Maestro 2.0.0" e, no texto, a seção da versão no `CHANGELOG.md`,
-começando por "O que muda para quem já usa". Como o CHANGELOG está em português,
-abra o texto com duas ou três linhas em inglês dizendo o que a versão traz. Marque
-"Set as the latest release".
+Depois do merge na `main` e da tag `vX.Y.Z`, crie a release a partir da tag, com o
+título "T3 Maestro X.Y.Z" e, no texto, a seção da versão no `CHANGELOG.md`, que já
+é curta. Como o CHANGELOG está em português, abra o texto com uma linha em inglês
+dizendo o que a versão traz. Marque "Set as the latest release".
 
 ```sh
-gh release create v2.0.0 --verify-tag --title "T3 Maestro 2.0.0" --notes-file <arquivo com a seção do CHANGELOG>
+gh release create vX.Y.Z --verify-tag --title "T3 Maestro X.Y.Z" --notes-file <arquivo com a seção do CHANGELOG>
 ```
 
 `--verify-tag` faz o comando parar se a tag ainda não existir na origem, em vez

@@ -110,8 +110,9 @@ baixa, valida e resume o que muda, no seu idioma.
 - **Sempre:** backup de tudo o que é local antes de mudar qualquer coisa, e dá para
   voltar atrás.
 
-O que mudou em cada versão está no [CHANGELOG](CHANGELOG.md), que começa sempre
-por "O que muda para quem já usa".
+O que mudou em cada versão está no [CHANGELOG](CHANGELOG.md): uma frase e até
+cinco itens curtos por versão, que o maestro conta no seu idioma. Sai no máximo
+uma versão por semana.
 
 - Quem usa a versão sem número (anterior à 2.0.0) precisa, uma vez, pedir ao
   maestro para rodar `git pull --ff-only` e reler o `AGENTS.md`.
@@ -216,10 +217,13 @@ afrouxa:
 1. Mude a base numa branch, lendo os cenários de [docs/cenarios.md](docs/cenarios.md).
 2. Se o formato de `local/` mudar, acrescente uma migração em `migracoes/` e um caso
    em `tests/atualizacao.sh`.
-3. Atualize `VERSION`, `CHANGELOG.md` e o selo de versão dos dois READMEs
-   (`README.md` e `README.pt-BR.md`).
-4. Depois do merge, crie a tag `vX.Y.Z` no commit da `main` e envie a tag. Para
-   testar antes do time, use `vX.Y.Z-rc.N`.
+3. Escreva uma linha curta em "Próxima versão", no `CHANGELOG.md`. Não mexa no
+   `VERSION`: merge não muda o número.
+4. Para lançar (no máximo uma vez por semana, como diz "Como os números mudam",
+   no topo do CHANGELOG): renomeie "Próxima versão" para `[X.Y.Z] - data`,
+   enxugada para uma frase e cinco itens, atualize o `VERSION` e o selo dos dois
+   READMEs, faça o merge e só então crie e envie a tag `vX.Y.Z` nesse commit da
+   `main`. Para testar antes do time, use `vX.Y.Z-rc.N`.
 
 As decisões de projeto estão em [docs/DECISOES.md](docs/DECISOES.md).
 

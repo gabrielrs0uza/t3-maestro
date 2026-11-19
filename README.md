@@ -116,9 +116,9 @@ language.
 - **Always:** a backup of everything local before anything changes, and a way
   back.
 
-What changed in each version is in the [CHANGELOG](CHANGELOG.md) (in Portuguese),
-which always opens with "O que muda para quem já usa", what changes for people
-already using it.
+What changed in each version is in the [CHANGELOG](CHANGELOG.md) (in Portuguese):
+one sentence and up to five short items per version, which the conductor retells
+in your language. A new version comes out at most once a week.
 
 - If you're on the unnumbered version (before 2.0.0), ask the conductor once to
   run `git pull --ff-only` and reread `AGENTS.md`.
@@ -225,10 +225,13 @@ A marked block in `AGENTS.md` that no setting, skill or local file can loosen:
    [docs/cenarios.md](docs/cenarios.md).
 2. If the format of `local/` changes, add a migration in `migracoes/` and a case
    in `tests/atualizacao.sh`.
-3. Update `VERSION`, `CHANGELOG.md` and the version badge in both READMEs
-   (`README.md` and `README.pt-BR.md`).
-4. After the merge, create the `vX.Y.Z` tag on the `main` commit and push the
-   tag. To test before the team does, use `vX.Y.Z-rc.N`.
+3. Add a short line under "Próxima versão" in `CHANGELOG.md`. Don't touch
+   `VERSION`: a merge doesn't change the number.
+4. To release (at most once a week, following "Como os números mudam" at the top
+   of the CHANGELOG): rename "Próxima versão" to `[X.Y.Z] - date`, trimmed to one
+   sentence and five items, update `VERSION` and the badge in both READMEs, merge,
+   then create and push the `vX.Y.Z` tag on that `main` commit. To test before
+   the team does, use `vX.Y.Z-rc.N`.
 
 Design decisions are in [docs/DECISOES.md](docs/DECISOES.md).
 
