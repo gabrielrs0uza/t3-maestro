@@ -158,9 +158,10 @@ fica o motivo de cada escolha e o que foi descartado.
   Code (até 7) e o Conductor. O bloco em inglês saiu: quem lê o changelog é o
   maestro, que conta ao dono no idioma do config, e duas línguas dobravam o texto.
   O README em inglês continua apresentando o projeto.
-- **Alternativa descartada: versões por data** (por exemplo, `2026.11.2`). Mostram
-  a idade de cada versão, mas o script instalado as recusaria. Veja
-  [referencias-2026-11.md](referencias-2026-11.md).
+- **Alternativa não escolhida: versões por data** (por exemplo, `v2026.11.1`). O
+  script instalado aceitaria, e a data mostra a idade da versão. Mas perde o sinal
+  do primeiro número ("precisa fazer algo à mão") e o salto de 2.1 para 2026.11
+  parece uma mudança enorme. Veja [referencias-2026-11.md](referencias-2026-11.md).
 
 ## Uma conversa que dura semanas
 
