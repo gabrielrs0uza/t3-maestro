@@ -47,7 +47,8 @@ da pauta. Ninguém religa sem ele pedir, nem a rotina, nem um intérprete.
 
 ## Rotina
 
-Com estado desejado `ligada`, a `T3 Monitor` confere a saúde a cada rodada. Caiu:
+Com estado desejado `ligada`, o resumo diário confere a saúde, e a `T3 Monitor`
+também, se o dono a ligou. Caiu:
 avise com o erro exato. Não religue além do que o supervisor já faz sozinho.
 
 ## Cláusula intocável

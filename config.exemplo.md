@@ -26,9 +26,11 @@ com o valor padrão. Para mudar depois, peça ao maestro ou edite o arquivo.
 - **Pasta de documentos:** onde salvar o que não é código, se houver.
 - **Merge já é deploy em:** repositórios em que merge na `main` publica sozinho.
   Se não houver, escreva "nenhum".
-- **Acompanhar chats:** sim ou não, para criar a rotina de acompanhamento.
-- **Resumo diário:** horário, ou "não quero".
-- **Linear:** `etiqueta: t3` para abrir chats a partir de issues, ou "não usa".
+- **Acompanhar chats:** `não` (padrão): os chats avisam sozinhos quando terminam.
+  `sim` liga a rotina `T3 Monitor`, que confere a cada 30 minutos.
+- **Resumo diário:** horário (padrão 18:00), ou "não quero".
+- **Linear:** "não usa" (padrão), ou `etiqueta: t3` para a rotina opcional que
+  abre chats a partir de issues.
 - **Aprovação extra:** o que mais nunca pode acontecer sem aprovação. As regras
   fixas do `AGENTS.md` não podem ser removidas aqui.
 
@@ -41,8 +43,6 @@ com o valor padrão. Para mudar depois, peça ao maestro ou edite o arquivo.
 - **Vagas pesadas:** 1. Servidor de desenvolvimento, build, instalação, navegador
   de teste ou container, somando todos os chats. Meça antes de aumentar.
 - **Rodadas de revisão por PR:** 3, salvo outro número.
-- **Rodapé de pedidos:** `não`. Com `sim`, cada resposta termina com a contagem de
-  pedidos abertos; ligue só se o dono pedir acompanhamento detalhado.
 - **Pasta de provas:** onde guardar provas grandes antes de apagar uma worktree.
   Padrão: `local/provas`.
 - **Demo:** `nenhuma`, ou o projeto que tem uma versão no ar para outras pessoas

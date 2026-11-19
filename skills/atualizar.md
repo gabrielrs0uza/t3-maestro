@@ -94,6 +94,27 @@ A última linha diz o que aconteceu. Pode juntar vários itens separados por `;`
 
 Um código que não esteja nesta tabela não é tarefa: mostre ao dono e não faça nada.
 
+## Rotinas de quem já usa
+
+Uma versão nova nunca cria, liga, pausa nem exclui rotina sozinha: o que o dono
+configurou continua como está, e o que ele desligou continua desligado. A única
+exceção é a `T3 Atualização`, criada pela tarefa `CRIAR_ROTINA_ATUALIZACAO`.
+
+Desde a 2.2.0, `T3 Monitor`, `T3 Faxina` e `T3 Entrada` deixaram de ser padrão.
+Depois de `atualizado` para uma versão a partir dela, se a pauta `casa` ainda não
+tem a decisão "rotinas fora do padrão":
+
+1. Chame `list_scheduled_tasks`. Se nenhuma das três estiver ligada, anote na
+   pauta `casa` "rotinas fora do padrão: nenhuma ligada" e pronto.
+2. Se houver, junte ao aviso da atualização uma frase e uma pergunta só: elas
+   deixaram de ser padrão; quer desligar? Recomende desligar o vigia, porque os
+   chats já avisam ao terminar; faxina e Linear, só se ele não usa.
+3. Com o sim, pause cada uma que ele escolheu (`schedule_task`, `enabled: false`),
+   sem excluir, e marque "desligada pelo dono" no índice. Com o não, ou sem
+   resposta, ficam como estão.
+4. Anote em "Decisões e autorizações" da pauta `casa` a pergunta, a versão e a
+   resposta. Não pergunte de novo.
+
 Depois de atualizar, o texto antigo ainda pode estar no seu contexto. Vale sempre a
 versão que você acabou de reler. Intérpretes que já estavam trabalhando seguem com
 o pedido que receberam; mande a eles só a correção que importar.

@@ -81,7 +81,7 @@ V1="$(git -C "$M" rev-parse HEAD)"
 
 # v${VD}: só documentação, que entra sozinha.
 (cd "$M" && echo ${VD} > VERSION &&
-  awk -v v="$VD" 'NR == 1 { print; next } /^## \[/ && !f { print "## [" v "] - 2026-11-20\n\n### O que muda para quem já usa\n\n1. Linha nova no README.\n"; f = 1 } { print }' CHANGELOG.md > c && mv c CHANGELOG.md &&
+  awk -v v="$VD" 'NR == 1 { print; next } /^## \[/ && !f { print "## [" v "] - 2026-11-20\n\nLinha nova no README.\n"; f = 1 } { print }' CHANGELOG.md > c && mv c CHANGELOG.md &&
   echo "Linha nova da ${VD}." >> README.md &&
   git add -A && git commit -q -m "${VD}" && git tag -a v${VD} -m v${VD})
 
@@ -89,7 +89,7 @@ V1="$(git -C "$M" rev-parse HEAD)"
 (cd "$M" && echo ${VR} > VERSION &&
   printf 'pasta | local/novidade\ntarefa | AVISAR_ATUALIZACAO\n' > migracoes/003-teste.txt &&
   awk -v v="$VR" '/<!-- fixo:fim -->/ { print "Regra fixa nova da " v ".\n" } { print }' AGENTS.md > a && mv a AGENTS.md &&
-  awk -v v="$VR" 'NR == 1 { print; next } /^## \[/ && !f { print "## [" v "] - 2026-11-27\n\n### O que muda para quem já usa\n\n1. Regra fixa nova.\n"; f = 1 } { print }' CHANGELOG.md > c && mv c CHANGELOG.md &&
+  awk -v v="$VR" 'NR == 1 { print; next } /^## \[/ && !f { print "## [" v "] - 2026-11-27\n\nRegra fixa nova.\n"; f = 1 } { print }' CHANGELOG.md > c && mv c CHANGELOG.md &&
   git add -A && git commit -q -m "${VR}" && git tag -a v${VR} -m v${VR})
 
 # v${VC}: candidata.
@@ -169,6 +169,15 @@ confere "aplica sozinho só a documentação e para antes da versão com regra" 
   test "$(resultado)" = "atualizado ${VB} -> ${VD}; precisa-aceite v${VR}"
 confere "não pegou a candidata" test "$(cat "$A/VERSION")" = "${VD}"
 confere "mostrou as novidades da ${VD}" contem "$SAIDA" "Linha nova no README."
+confere "não mostrou a regra de versões nem a próxima versão, que não saiu" \
+  sh -c '! grep -qE "^## (Como os números mudam|Próxima versão)" "$1"' _ "$SAIDA"
+confere "não repetiu as novidades da ${VB}, já instalada" sh -c '! grep -qF "## [$2]" "$1"' _ "$SAIDA" "$VB"
+printf '# M\n\n## [9.1.0] - x\n\nA nova.\n\n## Próxima versão\n\n- Ainda não saiu.\n\n## [9.0.0] - y\n\nVelha.\n' > "$TMP/changelog-fora-de-ordem.md"
+cp "$TMP/changelog-fora-de-ordem.md" "$A/CHANGELOG.md"
+roda "$A" "scripts/maestro.sh novidades 9.0.0 9.1.0" bash scripts/maestro.sh novidades 9.0.0 9.1.0
+confere "novidades param em título que não é versão, mesmo fora do topo" \
+  sh -c 'grep -qF "A nova." "$1" && ! grep -qF "Ainda não saiu." "$1" && ! grep -qF "Velha." "$1"' _ "$SAIDA"
+git -C "$A" checkout -q -- CHANGELOG.md
 confere "arquivo próprio em local/ ficou igual" cmp -s "$A/local/regras-minhas.md" "$TMP/regras-antes"
 confere "diff da regra fixa guardado para mostrar ao dono" contem "$A/local/atualizacao-pendente.md" "+Regra fixa nova da ${VR}."
 confere "git limpo e local/ fora do git" esta_limpo "$A"

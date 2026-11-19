@@ -146,6 +146,23 @@ fica o motivo de cada escolha e o que foi descartado.
   ela só é retomada quando o processo dono morreu.
 - **O que ficou para a 2.1** está em `CHANGELOG.md` e em `docs/seguranca.md`.
 
+## Versões e changelog (19/11/2026)
+
+- **O número só muda quando sai uma versão, no máximo uma por semana.** Antes,
+  cada PR mudava o `VERSION`; saíram duas versões em dois dias, e cada uma com
+  regra pede o ok do dono. A regra está no topo do `CHANGELOG.md`.
+- **O formato `vX.Y.Z` fica.** O script instalado nas cópias só aceita esse
+  formato e confere tag igual ao `VERSION`; trocar o esquema exigiria uma versão
+  de transição só para ensinar o script. Ficou a numeração, mudou o ritmo.
+- **Changelog curto, só em português.** Uma frase e até cinco itens, como o T3
+  Code (até 7) e o Conductor. O bloco em inglês saiu: quem lê o changelog é o
+  maestro, que conta ao dono no idioma do config, e duas línguas dobravam o texto.
+  O README em inglês continua apresentando o projeto.
+- **Alternativa não escolhida: versões por data** (por exemplo, `v2026.11.1`). O
+  script instalado aceitaria, e a data mostra a idade da versão. Mas perde o sinal
+  do primeiro número ("precisa fazer algo à mão") e o salto de 2.1 para 2026.11
+  parece uma mudança enorme. Veja [referencias-2026-11.md](referencias-2026-11.md).
+
 ## Uma conversa que dura semanas
 
 - **A conferência de atualização não depende de abrir chat novo.** Ela roda numa

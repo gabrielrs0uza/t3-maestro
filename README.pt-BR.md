@@ -42,8 +42,11 @@ sobre isso está em [docs/idiomas.md](docs/idiomas.md).
   outra: começa pela resposta, sem jargão, e faz no máximo uma pergunta por vez.
 - **Um intérprete por problema.** Cada frente de trabalho ganha o seu chat, numa
   cópia separada do repositório, e o maestro manda tudo o que ele precisa saber.
-- **Pedidos numerados.** Cada pedido seu ganha um número e fica anotado até ser
-  conferido ou descartado. O maestro diz o que conferiu e o que só ouviu dizer.
+- **Nada se perde.** Cada pedido seu fica anotado até ser conferido ou
+  descartado, sem cerimônia nas respostas. O maestro diz o que conferiu e o que só
+  ouviu dizer.
+- **Pouco barulho.** Os chats avisam quando terminam. Fora isso, no máximo um
+  resumo por dia, e nada quando não há novidade.
 - **Paralelo com limites.** Frentes independentes andam ao mesmo tempo, com um
   limite de chats e uma tarefa pesada por vez na máquina.
 - **Aprovações que não mudam.** Merge, deploy, dados de produção e exclusões pedem
@@ -110,8 +113,9 @@ baixa, valida e resume o que muda, no seu idioma.
 - **Sempre:** backup de tudo o que é local antes de mudar qualquer coisa, e dá para
   voltar atrás.
 
-O que mudou em cada versão está no [CHANGELOG](CHANGELOG.md), que começa sempre
-por "O que muda para quem já usa".
+O que mudou em cada versão está no [CHANGELOG](CHANGELOG.md): uma frase e até
+cinco itens curtos por versão, que o maestro conta no seu idioma. Sai no máximo
+uma versão por semana.
 
 - Quem usa a versão sem número (anterior à 2.0.0) precisa, uma vez, pedir ao
   maestro para rodar `git pull --ff-only` e reler o `AGENTS.md`.
@@ -216,10 +220,13 @@ afrouxa:
 1. Mude a base numa branch, lendo os cenários de [docs/cenarios.md](docs/cenarios.md).
 2. Se o formato de `local/` mudar, acrescente uma migração em `migracoes/` e um caso
    em `tests/atualizacao.sh`.
-3. Atualize `VERSION`, `CHANGELOG.md` e o selo de versão dos dois READMEs
-   (`README.md` e `README.pt-BR.md`).
-4. Depois do merge, crie a tag `vX.Y.Z` no commit da `main` e envie a tag. Para
-   testar antes do time, use `vX.Y.Z-rc.N`.
+3. Escreva uma linha curta em "Próxima versão", no `CHANGELOG.md`. Não mexa no
+   `VERSION`: merge não muda o número.
+4. Para lançar (no máximo uma vez por semana, como diz "Como os números mudam",
+   no topo do CHANGELOG): renomeie "Próxima versão" para `[X.Y.Z] - data`,
+   enxugada para uma frase e cinco itens, atualize o `VERSION` e o selo dos dois
+   READMEs, faça o merge e só então crie e envie a tag `vX.Y.Z` nesse commit da
+   `main`. Para testar antes do time, use `vX.Y.Z-rc.N`.
 
 As decisões de projeto estão em [docs/DECISOES.md](docs/DECISOES.md).
 

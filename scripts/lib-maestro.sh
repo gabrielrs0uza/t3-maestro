@@ -304,11 +304,6 @@ Atualizado: $(date -u '+%Y-%m-%d %H:%M UTC') · Regras: v$2 · Visto até: —
 | Projeto | Arquivo | Abertos | Esperando você |
 |---|---|---|---|
 
-## Chats vivos
-
-| Título | Chat | threadId | Projeto | Executor | Estado | Pedidos | PR | Lido até | Último aviso |
-|---|---|---|---|---|---|---|---|---|---|
-
 ## Vaga pesada
 
 ## Demo

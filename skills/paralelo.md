@@ -27,8 +27,8 @@ a abertura, pare e mostre o erro exato ao dono; não contorne com outra ferramen
   lote numerado em uma mensagem só (modelo em `mensagem-filho.md`), e não uma
   mensagem por pedido.
 - Intérprete ocupado: mande na hora só o que muda o trabalho em curso. O resto espera o
-  fim da vez dele e vai no próximo lote; anote no índice "lote pendente" e mande
-  assim que chegar o aviso dele ou na próxima rotina, o que vier primeiro.
+  fim da vez dele e vai no próximo lote; anote na pauta "lote pendente" e mande
+  assim que chegar o aviso dele ou, no mais tardar, no resumo diário.
 - Tarefa simples em um arquivo é um chat só, sem dividir.
 
 ## Áreas e integração
