@@ -465,8 +465,8 @@ cmd_novidades() { # de, para
       v="$(printf '%s\n' "$linha" | sed -E 's/^## \[([^]]+)\].*/\1/')"
       k="$(chave_versao "$v")"
       if [ "$k" \> "$de" ] && { [ "$k" \< "$para" ] || [ "$k" = "$para" ]; }; then mostrar=1; else mostrar=0; fi
-    elif printf '%s\n' "$linha" | grep -qE '^# '; then
-      mostrar=0
+    elif printf '%s\n' "$linha" | grep -qE '^##? '; then
+      mostrar=0 # título que não é versão, como "Próxima versão", nunca entra
     fi
     [ "${mostrar:-0}" = 1 ] && printf '%s\n' "$linha"
   done < CHANGELOG.md

@@ -172,6 +172,12 @@ confere "mostrou as novidades da ${VD}" contem "$SAIDA" "Linha nova no README."
 confere "não mostrou a regra de versões nem a próxima versão, que não saiu" \
   sh -c '! grep -qE "^## (Como os números mudam|Próxima versão)" "$1"' _ "$SAIDA"
 confere "não repetiu as novidades da ${VB}, já instalada" sh -c '! grep -qF "## [$2]" "$1"' _ "$SAIDA" "$VB"
+printf '# M\n\n## [9.1.0] - x\n\nA nova.\n\n## Próxima versão\n\n- Ainda não saiu.\n\n## [9.0.0] - y\n\nVelha.\n' > "$TMP/changelog-fora-de-ordem.md"
+cp "$TMP/changelog-fora-de-ordem.md" "$A/CHANGELOG.md"
+roda "$A" "scripts/maestro.sh novidades 9.0.0 9.1.0" bash scripts/maestro.sh novidades 9.0.0 9.1.0
+confere "novidades param em título que não é versão, mesmo fora do topo" \
+  sh -c 'grep -qF "A nova." "$1" && ! grep -qF "Ainda não saiu." "$1" && ! grep -qF "Velha." "$1"' _ "$SAIDA"
+git -C "$A" checkout -q -- CHANGELOG.md
 confere "arquivo próprio em local/ ficou igual" cmp -s "$A/local/regras-minhas.md" "$TMP/regras-antes"
 confere "diff da regra fixa guardado para mostrar ao dono" contem "$A/local/atualizacao-pendente.md" "+Regra fixa nova da ${VR}."
 confere "git limpo e local/ fora do git" esta_limpo "$A"

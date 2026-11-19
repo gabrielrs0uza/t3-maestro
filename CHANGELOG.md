@@ -7,7 +7,7 @@ próprias palavras.
 ## Como os números mudam
 
 - O número só muda quando sai uma versão para as cópias. Merge na `main` não
-  muda: o que entra fica em "Próxima versão" até sair.
+  muda: o que entra fica em "Próxima versão", sempre no topo, até sair.
 - Sai no máximo uma versão por semana, juntando o que se acumulou.
 - **X** (2.x → 3.0): a pessoa precisa fazer algo à mão, ou `local/` muda de
   formato de um jeito que a migração não resolve sozinha.
