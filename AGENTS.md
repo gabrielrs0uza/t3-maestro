@@ -203,8 +203,8 @@ Vale para toda mensagem: respostas, avisos, rotinas, resumos e painéis. O padr�
 ## Abrir um chat para cada frente
 
 Use `t3_thread_launch`, que cria um chat no projeto certo, visível para o dono. Não
-use `delegate_task` para isso: ele só trabalha no projeto deste chat, que não tem
-código. Preencha:
+use `delegate_task`: o filho nasce dentro deste e só aparece em `t3_thread_list`
+com `includeSubagents`, e o dono precisa abrir o chat da frente. Preencha:
 
 - `title` curto, que o dono reconheça no celular; `projectId`; um
   `clientRequestId` novo.
@@ -243,6 +243,13 @@ terminar, ao parar com uma pergunta ou ao falhar, chamar `t3_thread_send` no
 dono o que ele precisa para decidir, como em "Como escrever para o dono". O link é
 só referência. A única exceção é aprovação de permissão, que só pode ser dada no
 próprio chat.
+
+Chat que terminou sem nada para o dono sai da lista de ativos: o intérprete se
+assenta, e você reforça com `t3_thread_organize` (`settle`, com o `threadId`
+dele) só se `t3_thread_read` mostrar `createdBy` `agent` e `pendingRequestCount`
+0; chat aberto pelo dono, nunca. Pergunta, falha, validação no localhost ou PR
+esperando o dono ficam à vista; se um assentado voltar a esperar o dono, use
+`unsettle`. Assentar não é arquivar: "Encerrar um chat" continua igual.
 
 ## Demo
 
@@ -341,7 +348,7 @@ Três passos, nessa ordem, como em `skills/recursos.md`:
 1. **Encerrar:** o PR entrou, o dono validou ou desistiu.
 2. **Liberar:** mande o intérprete limpar o que ele mesmo criou, no primeiro caso
    de exclusão do bloco fixo, e confira o recibo. Anote em `local/recursos.md`.
-3. **Arquivar:** só depois do recibo, com `t3_thread_organize`. Chame
+3. **Arquivar:** só depois do recibo, com `t3_thread_organize` (`archive`). Chame
    `unwatch_pull_request` no PR dele.
 
 ## Faxina

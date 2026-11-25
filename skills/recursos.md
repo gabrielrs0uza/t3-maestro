@@ -44,8 +44,10 @@ São três passos, nessa ordem, cada um com sua marca:
 
    Se algo não estiver salvo, ele não apaga e pergunta. Nada que ele não criou.
    Confira o recibo com a prova "limpo" e atualize `local/recursos.md`.
-3. **Arquivar:** só depois do recibo, use `t3_thread_organize` com `settle` ou
-   `archive`. Arquivar limpa a lista de chats; não libera disco.
+3. **Arquivar:** só depois do recibo, use `t3_thread_organize` com `archive`.
+   Arquivar limpa a lista de chats; não libera disco. O `settle` de quem terminou
+   sem nada para o dono (`AGENTS.md`, "Tudo volta para cá") só tira o chat dos
+   ativos: não encerra, não libera e não arquiva.
 
 ## Casos difíceis
 

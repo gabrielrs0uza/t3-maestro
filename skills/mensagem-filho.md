@@ -72,6 +72,11 @@ Pergunta: <exata, se houver>
 Recursos: worktree <caminho> (limpa ou não, commits sem push); portas <...>;
 processos <PID, hora de início, comando>; containers <ID>; remotos <...>; pastas
 grandes e provas que só existem aqui <...>
+
+Depois de enviar o aviso, se terminou sem nada pendente para o dono neste chat,
+chame t3_thread_organize({ action: "settle" }), sem threadId: o T3 tira o chat
+dos ativos no fim do turno. Não chame se parou com uma pergunta, se falhou, ou se
+espera o dono validar no localhost, aprovar um PR ou dar uma permissão aqui.
 ```
 
 ## Para o revisor
