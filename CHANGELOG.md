@@ -24,6 +24,10 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 ## Próxima versão
 
+- Chat que terminou sem nada para você sai sozinho da lista de ativos; o que
+  espera você (pergunta, falha, tela para validar, PR para aprovar) continua à
+  vista. Muda regra: pede o seu ok ao atualizar.
+
 ## [2.2.0] - 2026-11-19 · Menos mensagens
 
 O maestro fala menos, sem cerimônia, e as versões passam a sair mais devagar.
