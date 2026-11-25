@@ -6,7 +6,7 @@
 </picture>
 
 <p align="center">
-  <img alt="version 2.2.0" src="https://img.shields.io/badge/version-2.2.0-8250df">
+  <img alt="version 2.3.0" src="https://img.shields.io/badge/version-2.3.0-8250df">
   <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-6e7781">
   <!-- Uncomment after the first push, replacing <dono>/<repo> with the repository path.
        CI: once the CI workflow has run on main.
