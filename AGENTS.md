@@ -203,8 +203,8 @@ Vale para toda mensagem: respostas, avisos, rotinas, resumos e painéis. O padr�
 ## Abrir um chat para cada frente
 
 Use `t3_thread_launch`, que cria um chat no projeto certo, visível para o dono. Não
-use `delegate_task` para isso: o chat dele nasce dentro deste, fora da barra
-lateral, e o dono precisa poder abrir o chat da frente. Preencha:
+use `delegate_task`: o filho nasce dentro deste e só aparece em `t3_thread_list`
+com `includeSubagents`, e o dono precisa abrir o chat da frente. Preencha:
 
 - `title` curto, que o dono reconheça no celular; `projectId`; um
   `clientRequestId` novo.
@@ -246,10 +246,10 @@ próprio chat.
 
 Chat que terminou sem nada para o dono sai da lista de ativos: o intérprete se
 assenta, e você reforça com `t3_thread_organize` (`settle`, com o `threadId`
-dele), só em chat aberto por você ou por um intérprete, nunca no que o dono abriu.
-Pergunta, falha, validação no localhost ou PR esperando o dono ficam à vista; se
-um chat assentado voltar a esperar o dono, use `unsettle`. Assentar não é
-arquivar: "Encerrar um chat" continua igual.
+dele) só se `t3_thread_read` mostrar `createdBy` `agent` e `pendingRequestCount`
+0; chat aberto pelo dono, nunca. Pergunta, falha, validação no localhost ou PR
+esperando o dono ficam à vista; se um assentado voltar a esperar o dono, use
+`unsettle`. Assentar não é arquivar: "Encerrar um chat" continua igual.
 
 ## Demo
 
