@@ -130,5 +130,5 @@ intérprete quem usa. Toque e texto vão pelo comando `agent-device` que
 | Ferramenta | O que faz · quando o maestro usa |
 |---|---|
 | `request_secret` | Cartão privado para o dono digitar uma senha ou chave; ninguém vê o valor. Sempre no lugar de pedir segredo no chat. |
-| `t3_attachment_prepare_upload` | Prepara o envio de um arquivo e devolve `relativeUrl`. Depois, mande os bytes exatos do arquivo (POST) para esse endereço no servidor do T3 e só então use `t3_thread_send_attachments` com o `attachmentId`. O esquema limita o tamanho: 10 MB ou 50 MB, sem dizer qual vale para cada tipo (não confirmado). |
+| `t3_attachment_prepare_upload` | Prepara o envio de um arquivo e devolve `relativeUrl`. Depois, mande os bytes exatos do arquivo (POST) para esse endereço no servidor do T3 e só então use `t3_thread_send_attachments` com o `attachmentId`. |
 | `t3_attachment_discard` | 🔒 Só a pedido do dono. Descarta um envio preparado e ainda não enviado. |
