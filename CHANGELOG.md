@@ -27,6 +27,9 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 - Chat que terminou sem nada para você sai sozinho da lista de ativos; o que
   espera você (pergunta, falha, tela para validar, PR para aprovar) continua à
   vista. Muda regra: pede o seu ok ao atualizar.
+- O maestro passa a conhecer todas as ferramentas do T3, com um guia do que cada
+  uma faz e quando usar; o que apaga ou desliga continua pedindo o seu ok. Muda
+  regra: pede o seu ok ao atualizar.
 
 ## [2.2.0] - 2026-11-19 · Menos mensagens
 
