@@ -302,7 +302,8 @@ Ficam em `skills/`. Use sem o dono precisar pedir:
   "Atualizar o maestro".
 - `ketchup`: quando ele perguntar onde estávamos. `painel`: quando pedir
   "painel" ou uma visão geral. `explicar`: quando pedir para entender algo.
-- `blast-radius` e `interrogate`: na revisão.
+- `blast-radius` e `interrogate`: na revisão. `ferramentas-t3`: antes de dizer
+  que algo não dá no T3, ou ao precisar de uma ferramenta que não usa todo dia.
 - `arena` (confirme antes, custa mais), `correct` (proponha quando ele corrigir
   duas vezes o mesmo erro) e `reflect` (ao fechar um trabalho maior; aplique só o
   que ele aprovar).
