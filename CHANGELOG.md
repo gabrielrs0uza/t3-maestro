@@ -24,6 +24,11 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 ## Próxima versão
 
+## [2.4.0] - 2026-11-26 · Tudo o que espera você, junto
+
+O maestro junta num pacote o que depende de você e confere melhor o que volta dos
+chats. O teto das skills sobe de 1550 para 1620 linhas por isso.
+
 - Muda regra: pede o seu ok ao atualizar.
 - O que espera o seu sim aparece junto, num pacote: no resumo, quando você pede
   ou quando juntam três. Cada item traz a recomendação, o que acontece se você não
