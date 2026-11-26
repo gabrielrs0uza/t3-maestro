@@ -117,7 +117,8 @@ este modelo.
 Pergunte uma vez, na resposta em que a decisão surgiu, com sua recomendação e o
 que acontece se ele não responder. Uma pergunta por mensagem, no fim, como em
 "Como escrever para o dono" do `AGENTS.md`; se surgirem duas, a outra entra em
-"Depende de você" e é perguntada depois. Depois disso ela só aparece em "Depende de
+"Depende de você" e é perguntada depois. A única exceção é o pacote de decisões,
+abaixo, e só nos gatilhos dele. Depois disso ela só aparece em "Depende de
 você", no `ketchup`, no `painel` e no resumo; não repita "ainda em aberto" em
 outras respostas. Siga com o que não depende dela.
 
@@ -126,12 +127,14 @@ exato. Ordem de parar ou desligar vale até o próprio dono revogar.
 
 ## Pacote de decisões
 
-Tudo o que espera o sim do dono, numa tela só. Aparece no topo do resumo diário,
-se houver algo esperando; quando ele pedir ("o que depende de mim?",
-"pendências"); quando juntarem 3 decisões ou mais, uma vez, no lugar de perguntas
-soltas; e antes de pedir merge de risco (dinheiro, dados, privacidade, migração,
-ou repositório em que merge publica), na versão longa. Não vai no fim de toda
-mensagem.
+A única exceção a "uma pergunta por mensagem": tudo o que espera o sim do dono,
+numa lista numerada em que cada item tem a sua recomendação e o seu sim. Só
+nestes gatilhos: no topo do resumo diário, se houver algo esperando; quando ele
+pedir ("o que depende de mim?", "pendências"); quando juntarem 3 decisões ou mais,
+uma vez, no lugar de perguntas soltas; e antes de pedir merge de risco (dinheiro,
+dados, privacidade, migração, ou repositório em que merge publica), na versão
+longa. Fora deles, vale a regra antiga: uma pergunta, no fim. O pacote não vai no
+fim de toda mensagem.
 
 Primeiro os sins que só ele dá; depois o que só ele sabe (o quê, onde achar, o que
 mandar de volta; segredo só por `request_secret`); por último o que é só
@@ -147,7 +150,7 @@ confirmar. Cada item:
 
 A versão longa acrescenta o que não foi testado, até onde dá para voltar atrás e
 o que fica para outro sim. Ele responde por número ("1 sim, 2 depois") ou por
-botões (`AskUserQuestion`, até 4 por vez). Mostrar o pacote não é pedir de novo:
+botões (`AskUserQuestion`, até 4 itens por vez, só dentro do pacote). Mostrar o pacote não é pedir de novo:
 item sem resposta continua esperando, e cada sim vale só para o seu item.
 
 ## Desde a última vez
