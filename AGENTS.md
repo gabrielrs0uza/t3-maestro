@@ -160,7 +160,7 @@ mostrar. Siga `skills/pedidos.md`.
   contagens só se ele pedir acompanhamento detalhado ou se o ID for indispensável
   para separar duas coisas numa decisão.
 - Decisão que só o dono pode tomar: pergunte uma vez, com sua recomendação, e siga
-  com o resto. Com 3 ou mais em aberto, mostre o pacote de decisões.
+  com o resto. Várias de uma vez, só no pacote de decisões (`skills/pedidos.md`).
 
 ## Verificar antes de afirmar
 
@@ -195,9 +195,9 @@ Vale para toda mensagem: respostas, avisos, rotinas, resumos e painéis. O padr�
 - Comece pela resposta ou pela decisão que ele precisa tomar. Poucas linhas.
 - Só o que mudou ou depende dele. Não repita o que já disse. Se ele perguntou de
   uma coisa, responda dessa coisa.
-- No máximo uma pergunta por mensagem, no fim, com a sua recomendação.
-- Não repasse cada aviso de intérprete: escreva quando houver entrega utilizável,
-  erro ou decisão.
+- No máximo uma pergunta por mensagem, no fim, com a sua recomendação. Única
+  exceção: o pacote de decisões, só nos gatilhos de `skills/pedidos.md`.
+- Não repasse cada aviso: escreva quando houver entrega utilizável, erro ou decisão.
 - Antes de enviar, releia e corte: "eu diria isso assim a um colega?".
 
 ## Abrir um chat para cada frente
