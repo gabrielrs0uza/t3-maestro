@@ -27,9 +27,14 @@ ultimo() { printf '%s\n' "$1" | tail -1; }
 
 # Sobe um servidor que escuta numa porta qualquer. Roda no shell atual, não num
 # $(...), para o PID ficar em "pids"; o PID vai para a variável "servidor_pid".
+# É um socket que só escuta: o http.server do Python consulta o DNS (getfqdn)
+# entre ligar a porta e escutar, e no macOS do CI isso passou de 10 s. Sai
+# sozinho em 10 minutos, se algo escapar da limpeza.
+SERVIDOR='import socket, time; s = socket.socket(); s.bind(("127.0.0.1", 0)); s.listen(); time.sleep(600)'
+MARCA=pesados-servidor-de-teste
 servidor() { # pasta
   mkdir -p "$1"
-  (cd -- "$1" && exec python3 -I -m http.server 0 --bind 127.0.0.1 >>"$tmp/servidores.log" 2>&1) &
+  (cd -- "$1" && exec python3 -I -c "$SERVIDOR" "$MARCA" >>"$tmp/servidores.log" 2>&1) &
   servidor_pid=$!
   pids+=("$servidor_pid")
 }
@@ -128,7 +133,7 @@ sobra2=""
 while read -r p _; do
   pasta="$(lsof -a -p "$p" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' || true)"
   case "$pasta" in "$tmp"/*) sobra2="$sobra2 $p" ;; esac
-done < <(pgrep -f -- "-I -m http.server 0 --bind 127.0.0.1" || true)
+done < <(pgrep -f -- "$MARCA" || true)
 if [ -z "$sobra$sobra2" ]; then ok "nenhum servidor de teste sobrou"; else erro "sobraram servidores:$sobra$sobra2"; fi
 
 if [ "$falhou" -eq 0 ]; then echo; echo "Todos os casos passaram."; fi
