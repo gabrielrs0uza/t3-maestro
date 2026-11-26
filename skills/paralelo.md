@@ -40,6 +40,12 @@ para uma etapa em sequência.
 
 - Cada trabalhador tem a área dele declarada no pedido ("você só altera X") e uma
   worktree empilhada na branch do PR: `baseRef` na branch e `startFromOrigin: false`.
+  Branch empilhada carrega os commits da de baixo: o merge dela publica os dois.
+- Todo pedido de código tem área. A pauta guarda as "Áreas em uso"; antes de abrir
+  um chat, confira se a área nova cruza uma aberta. Na volta, compare a linha
+  "Arquivos" do aviso com a área: arquivo fora dela, pergunte antes de seguir.
+- Abra primeiro o chat que destrava os outros. Mantenha seus turnos curtos: o aviso
+  de um intérprete só é lido quando o seu turno acaba.
 - Um integrador por frente: o chat dono da branch. Ele traz um trabalhador por vez
   para a branch, roda os testes, e os outros atualizam. Quem conflitar resolve e
   testa de novo. Integrar aqui é juntar commits na branch do trabalho; merge de PR,
@@ -52,7 +58,8 @@ para uma etapa em sequência.
 ## Rodadas de revisão
 
 Uma rodada é um parecer do revisor sobre um commit. O limite por PR, para o mesmo
-escopo, é o número de "Rodadas de revisão por PR" do config (3, por padrão).
+escopo, é o número de "Rodadas de revisão por PR" do config (3, por padrão). Só o
+que bloqueia volta para correção sem perguntar; o "Depois" vai ao dono como opção.
 
 Ao passar do limite, não abra revisor nem correção. Leve ao dono uma decisão, com
 os achados que sobraram: aceitar como limites conhecidos, redesenhar, cortar escopo
@@ -78,10 +85,21 @@ Quem distribui a vaga é você:
 
 1. No pedido, diga se o intérprete tem a vaga ("Você tem a vaga pesada; avise quando
    liberar") ou não ("Sem vaga pesada: se precisar, peça ao maestro e espere").
-2. Pedido de vaga chega pelo aviso do intérprete. Antes de dar, olhe a memória livre
-   (`memory_pressure` no macOS, `free -g` no Linux). Sob pressão, espere.
-3. Registre no índice quem está com a vaga, para quê e desde quando, e a fila de
-   espera. Ao liberar, passe ao próximo da fila, na ordem dos pedidos.
+2. Pedido de vaga chega pelo aviso do intérprete. Antes de dar, rode
+   `scripts/pesados.sh` na pasta do maestro: só lê, lista o que pesa em cada
+   worktree (PID, início, memória, porta) e a memória livre, e termina em
+   `RESULTADO: livre|cheio|acima <em uso> <vagas>`. Só dê a vaga com `livre`.
+   `desconhecido` quer dizer que ele não conseguiu olhar: não dê a vaga sem
+   conferir de outro jeito ou perguntar ao dono.
+   Com `cheio`, `acima` ou memória apertada, espere até 15 minutos; passou disso,
+   peça ao chat que segura a vaga há mais tempo sem uso que desligue, ou conte ao
+   dono quem está segurando. Espera sem teto não termina.
+3. Registre no índice o que o comando viu, com a hora: quem está com a vaga, para
+   quê e desde quando, e a fila de espera. Ao liberar, passe ao próximo da fila,
+   na ordem dos pedidos.
+   Rode o comando também no resumo diário e quando a máquina apertar. Pesado numa
+   worktree que não tem a vaga: peça ao chat dono dela que desligue ou peça a vaga.
+   Worktree que não é de um chat da pauta: só conte ao dono.
 4. Servidor que espera o dono validar segura a vaga. Se a validação passar de 2
    horas, peça ao intérprete para desligar o servidor e subir de novo quando o dono for
    ver.

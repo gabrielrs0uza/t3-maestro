@@ -176,8 +176,8 @@ de uma versão nova.
 
 - `.github/workflows/ci.yml`, a cada push e PR: `Privacidade`
   (`scripts/checar-privacidade.sh` e `tests/privacidade.sh`), `Base coerente`
-  (`scripts/checar-base.sh`), `Testes` (`tests/atualizacao.sh` em Ubuntu e
-  macOS, com e sem `CDPATH` exportado), `Shellcheck` (falha a partir de
+  (`scripts/checar-base.sh`), `Testes` (`tests/atualizacao.sh` e
+  `tests/pesados.sh`, que só lê processos, em Ubuntu e macOS, com e sem `CDPATH` exportado), `Shellcheck` (falha a partir de
   `warning`) e `Gitleaks` (todo o histórico).
 - `.github/workflows/scorecard.yml`: OpenSSF Scorecard só no ramo padrão, toda
   semana, a cada push na `main` e quando a proteção de branch muda. Publica a

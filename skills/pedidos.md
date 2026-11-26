@@ -44,17 +44,31 @@ Agora: checkout novo em revisão; o dono quer o PR antes de sexta.
 | LJ-14 | Dica de como convidar pessoas (ver LJ-13) | anotado | | | 13/11 15:02 |
 
 A coluna "Chat" guarda o link e o `threadId` de quem executa: é assim que você
-manda ordens e lê o chat, sem uma tabela de chats à parte. Pautas antigas, com as
-colunas "Desde", "Onde" e "Publicado", continuam valendo; ao reescrever, use este
-modelo.
+manda ordens e lê o chat, sem uma tabela de chats à parte.
+
+## Áreas em uso
+
+| Chat | Só altera |
+|---|---|
+| Fila B | `src/fila/`, `tests/fila/` |
 
 ## Decisões e autorizações
 
-| Quando | O quê | Alvo | Situação |
-|---|---|---|---|
-| 13/11 15:30 | aprovou o merge | PR #12, commit 1b5160f | usada às 15:42 |
-| 13/11 18:00 | desligou a demo | demo da Loja | vale até ele pedir de novo |
+| Quando | Palavras do dono | O quê | Alvo | Situação |
+|---|---|---|---|---|
+| 13/11 15:30 | "pode juntar o 12" | aprovou o merge | PR #12, commit 1b5160f | usada às 15:42 |
+| 13/11 18:00 | "desliga a demo" | desligou a demo | demo da Loja | vale até ele pedir de novo |
+
+## Segurado
+
+| O quê | Por quê | Solta quando |
+|---|---|---|
+| PR #14 (carrega o #13) | o #13 espera o dono | o dono aprovar o #13 |
 ```
+
+Pautas antigas, sem "Áreas em uso" e "Segurado", com as colunas "Desde", "Onde"
+e "Publicado" ou sem "Palavras do dono", continuam valendo; ao reescrever, use
+este modelo.
 
 ## Anotar
 
@@ -70,7 +84,8 @@ modelo.
    o ID for indispensável para separar duas coisas numa decisão.
 4. A coluna "Pedido" resume a fala do dono sem mudar o sentido. Se ele mudar o
    pedido, reescreva a célula e anote a versão anterior no diário. Nunca apague
-   um pedido: descarte com motivo.
+   um pedido: descarte com motivo. Feedback de tela, print ou referência que ele
+   deu vai ao intérprete como veio: as palavras dele entre aspas e a imagem.
 5. Toda ordem a um intérprete cita os IDs, e o intérprete responde por ID.
 
 ## Estados
@@ -102,12 +117,57 @@ modelo.
 Pergunte uma vez, na resposta em que a decisão surgiu, com sua recomendação e o
 que acontece se ele não responder. Uma pergunta por mensagem, no fim, como em
 "Como escrever para o dono" do `AGENTS.md`; se surgirem duas, a outra entra em
-"Depende de você" e é perguntada depois. Depois disso ela só aparece em "Depende de
+"Depende de você" e é perguntada depois. A única exceção é o pacote de decisões,
+abaixo, e só nos gatilhos dele. Depois disso ela só aparece em "Depende de
 você", no `ketchup`, no `painel` e no resumo; não repita "ainda em aberto" em
 outras respostas. Siga com o que não depende dela.
 
-Toda aprovação vai para "Decisões e autorizações", com o alvo exato. Ordem de
-parar ou desligar vale até o próprio dono revogar.
+Toda aprovação vai para "Decisões e autorizações", com as palavras dele e o alvo
+exato. Ordem de parar ou desligar vale até o próprio dono revogar.
+
+## Pacote de decisões
+
+A única exceção a "uma pergunta por mensagem": tudo o que espera o sim do dono,
+numa lista numerada em que cada item tem a sua recomendação e o seu sim. Só
+nestes gatilhos: no topo do resumo diário, se houver algo esperando; quando ele
+pedir ("o que depende de mim?", "pendências"); quando juntarem 3 decisões ou mais,
+uma vez, no lugar de perguntas soltas; e antes de pedir merge de risco (dinheiro,
+dados, privacidade, migração, ou repositório em que merge publica), na versão
+longa. Fora deles, vale a regra antiga: uma pergunta, no fim. O pacote não vai no
+fim de toda mensagem.
+
+Primeiro os sins que só ele dá; depois o que só ele sabe (o quê, onde achar, o que
+mandar de volta; segredo só por `request_secret`); por último o que é só
+confirmar. Cada item:
+
+```
+1. Juntar o PR do checkout novo? Merge aqui já publica.
+   Recomendo: sim.
+   Se sim: entra no ar em minutos. Se não responder: fica parado, nada publica.
+   De onde vem: CI passou neste commit (conferi agora); revisão sem bloqueio.
+   Dá para desfazer? Sim, desfazendo o merge.
+```
+
+A versão longa acrescenta o que não foi testado, até onde dá para voltar atrás e
+o que fica para outro sim. Ele responde por número ("1 sim, 2 depois") ou por
+botões (`AskUserQuestion`, até 4 itens por vez, só dentro do pacote). Mostrar o
+pacote não é pedir de novo: item sem resposta continua esperando, e cada sim vale
+só para o seu item.
+
+### PRs prontos juntos
+
+Com dois PRs prontos ou mais, um pacote só, um item por PR: o que muda, o commit,
+se o merge publica, a prova e o que ele carrega (linha "Carrega" do aviso). Se
+dois mexem em áreas vizinhas, antes peça ao intérprete de um deles que junte os
+dois sobre a `main` numa branch local de teste, sem push, e rode o rápido.
+
+- O sim é por PR: o dono diz o número de cada um. "Sim para todos" não basta:
+  liste os PRs e peça o número de cada.
+- PR que carrega outro só entra depois que o de baixo entrou.
+- Cada sim vai para "Decisões e autorizações" com o commit. Commit novo, ou PR
+  que chegou depois do pacote, pede sim novo.
+- Com os sins, cada chat junta o seu PR, um de cada vez, na ordem do pacote,
+  conferindo antes que o commit é o aprovado. Nada entra por autorização geral.
 
 ## Desde a última vez
 

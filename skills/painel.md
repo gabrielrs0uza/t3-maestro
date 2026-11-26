@@ -16,7 +16,7 @@ Página com `html_preview` e depois `html_render`, seguindo as regras visuais de
 idioma de `local/config.md`, com o atributo `lang` dele, inclusive os títulos
 abaixo, que são exemplos em português. Nesta ordem:
 
-1. **Depende de você:** cada decisão com a recomendação e o que muda. Se não houver,
+1. **Depende de você:** o pacote de decisões de `pedidos.md`. Se não houver nada,
    diga isso em uma frase. Não cobre o que estiver pausado.
 2. **Desde a última vez:** o bloco de `pedidos.md`, por projeto.
 3. **Em andamento:** por projeto, cada pedido aberto em linguagem simples.

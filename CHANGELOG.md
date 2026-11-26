@@ -24,6 +24,24 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 ## Próxima versão
 
+## [2.4.0] - 2026-11-26 · Tudo o que espera você, junto
+
+O maestro junta o que depende de você e confere melhor o que volta dos chats e o
+que pesa na máquina. Sai um dia depois da 2.3.0, exceção única pedida pelo
+mantenedor; a regra de uma versão por semana continua.
+
+- Muda regra e script: pede o seu ok ao atualizar. Tetos: regras 455 linhas,
+  skills 1660.
+- O que espera o seu sim chega junto, num pacote: no resumo, quando você pede ou
+  quando juntam três, cada item com recomendação e se dá para desfazer. PRs
+  prontos vêm juntos, mas o sim é por PR.
+- Cada frente diz em que arquivos mexe, e o maestro confere na volta; prints e
+  exemplos seus chegam ao chat como vieram.
+- A revisão começa dizendo se pode ou não entrar; só o que bloqueia volta para
+  correção. Antes de um merge, o maestro diz se o PR carrega outro.
+- Antes de dar a vaga pesada, o maestro olha o que está ligado em cada chat e,
+  acima do limite, pede para desligar. Caderno de lições, com prazo para sair.
+
 ## [2.3.0] - 2026-11-25 · Lista mais limpa
 
 A lista de chats mostra só o que espera você, e o maestro passa a conhecer todas

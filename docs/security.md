@@ -186,8 +186,8 @@ network limits and `MAESTRO_PARAR_EM` coming from a new version.
 
 - `.github/workflows/ci.yml`, on every push and pull request: `Privacidade`
   (`scripts/checar-privacidade.sh` and `tests/privacidade.sh`), `Base coerente`
-  (`scripts/checar-base.sh`), `Testes` (`tests/atualizacao.sh` on Ubuntu and
-  macOS, with and without an exported `CDPATH`), `Shellcheck` (fails from
+  (`scripts/checar-base.sh`), `Testes` (`tests/atualizacao.sh` and
+  `tests/pesados.sh`, which only reads processes, on Ubuntu and macOS, with and without an exported `CDPATH`), `Shellcheck` (fails from
   `warning` up) and `Gitleaks` (the whole history).
 - `.github/workflows/scorecard.yml`: OpenSSF Scorecard on the default branch
   only, weekly, on every push to `main` and when branch protection changes. It

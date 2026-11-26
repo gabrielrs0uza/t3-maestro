@@ -16,7 +16,7 @@ chame algo que crie, altere ou apague só para testar.
 | `create_threads` | Cria vários chats de uma vez neste mesmo checkout (herda projeto e branch). Só se o dono pedir chats lado a lado aqui; frente com worktree própria é `t3_thread_launch`. |
 | `t3_thread_send` | Manda mensagem a um chat: `auto`, `queue`, `steer`; `restart` interrompe e recomeça: 🔒 só a pedido do dono. Ordens e decisões do dono. |
 | `t3_thread_send_attachments` | Manda anexos já enviados (ver Anexos) como mensagem nova. Sem chave de repetição: não reenvie à toa. |
-| `t3_thread_read` | Lê um chat (`messages` ou `activity`), com `limit` e `maxCharsPerItem` baixos. Antes de responder sobre ele. |
+| `t3_thread_read` | Lê um chat (`messages` ou `activity`), com `limit` e `maxCharsPerItem` baixos. Antes de responder sobre ele; `activity` para achar o que trava um chat parado. |
 | `t3_thread_list` | Lista chats por projeto, estado, assentados ou adiados. Achar chats de uma frente. |
 | `t3_thread_search` | Busca chats ativos por título, branch, PR ou texto. Não é exaustiva. |
 | `t3_thread_wait` | Espera a execução de um chat terminar. Raro: os intérpretes avisam sozinhos. Nunca para vigiar em laço. |
@@ -78,7 +78,7 @@ chame algo que crie, altere ou apague só para testar.
 |---|---|
 | `watch_pull_request` | Vigia um PR aberto e acorda o maestro em CI, comentário ou conflito. Só o maestro; acordar não é aprovar merge. |
 | `unwatch_pull_request` | Para de vigiar (o PR continua ligado). Ao encerrar o chat ou trocar de titular. |
-| `link_pull_request` · `link_pull_requests` | Liga um ou vários PRs a um chat; o T3 mostra o estado e assenta no merge. |
+| `link_pull_request` · `link_pull_requests` | Liga um ou vários PRs a um chat; o T3 mostra o estado e assenta no merge. O maestro liga cada PR ao chat do intérprete que o abriu (`threadId` dele). |
 | `unlink_pull_request` · `unlink_pull_requests` | 🔒 Só a pedido do dono. Desliga PRs de um chat (um, ou todos num estado). |
 | `list_thread_pull_requests` | PRs ligados a um chat, com estado. Só quando precisar da lista. |
 | `read_pull_request_guide` | Lê o guia de revisão guardado de um PR. Não inicia nada. |
