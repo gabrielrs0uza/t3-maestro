@@ -24,6 +24,11 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 ## Próxima versão
 
+## [2.5.0] - 2026-11-26 · Trabalho pesado à vista
+
+O maestro olha o que está ligado antes de dar a vaga pesada e guarda o que
+aprendeu. Tetos: regras de 450 para 455 linhas, skills de 1620 para 1660.
+
 - Muda regra e script: pede o seu ok ao atualizar.
 - Antes de dar a vaga de trabalho pesado, o maestro olha o que está ligado em cada
   chat (servidor, build, container); acima do limite, ele pede para desligar ou
