@@ -57,6 +57,11 @@ repositório é CC BY 4.0. Tudo foi reescrito em português; nada foi copiado.
 - referências e prints do dono levados como vieram;
 - ligar cada PR ao chat que o abriu, e ler a atividade de chat parado.
 
+Na versão 2.5.0, da mesma fonte: a lição "vagas, não limite de carga" do
+`heavy.sh`, que virou um contador só de leitura (`scripts/pesados.sh`, escrito
+aqui); o caderno de lições, do `lessons.md`; e a apresentação conjunta dos PRs
+prontos, sem a publicação em lote por autorização geral.
+
 ## O que não está registrado
 
 A versão exata do pstack-t3 usada na primeira adaptação das skills não ficou

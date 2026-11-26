@@ -85,10 +85,19 @@ Quem distribui a vaga é você:
 
 1. No pedido, diga se o intérprete tem a vaga ("Você tem a vaga pesada; avise quando
    liberar") ou não ("Sem vaga pesada: se precisar, peça ao maestro e espere").
-2. Pedido de vaga chega pelo aviso do intérprete. Antes de dar, olhe a memória livre
-   (`memory_pressure` no macOS, `free -g` no Linux). Sob pressão, espere.
-3. Registre no índice quem está com a vaga, para quê e desde quando, e a fila de
-   espera. Ao liberar, passe ao próximo da fila, na ordem dos pedidos.
+2. Pedido de vaga chega pelo aviso do intérprete. Antes de dar, rode
+   `scripts/pesados.sh` na pasta do maestro: só lê, lista o que pesa em cada
+   worktree (PID, início, memória, porta) e a memória livre, e termina em
+   `RESULTADO: livre|cheio|acima <em uso> <vagas>`. Só dê a vaga com `livre`.
+   Com `cheio`, `acima` ou memória apertada, espere até 15 minutos; passou disso,
+   peça ao chat que segura a vaga há mais tempo sem uso que desligue, ou conte ao
+   dono quem está segurando. Espera sem teto não termina.
+3. Registre no índice o que o comando viu, com a hora: quem está com a vaga, para
+   quê e desde quando, e a fila de espera. Ao liberar, passe ao próximo da fila,
+   na ordem dos pedidos.
+   Rode o comando também no resumo diário e quando a máquina apertar. Pesado numa
+   worktree que não tem a vaga: peça ao chat dono dela que desligue ou peça a vaga.
+   Worktree que não é de um chat da pauta: só conte ao dono.
 4. Servidor que espera o dono validar segura a vaga. Se a validação passar de 2
    horas, peça ao intérprete para desligar o servidor e subir de novo quando o dono for
    ver.

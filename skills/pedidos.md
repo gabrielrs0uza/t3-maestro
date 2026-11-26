@@ -150,6 +150,21 @@ o que fica para outro sim. Ele responde por número ("1 sim, 2 depois") ou por
 botões (`AskUserQuestion`, até 4 por vez). Mostrar o pacote não é pedir de novo:
 item sem resposta continua esperando, e cada sim vale só para o seu item.
 
+### PRs prontos juntos
+
+Com dois PRs prontos ou mais, um pacote só, um item por PR: o que muda, o commit,
+se o merge publica, a prova e o que ele carrega (linha "Carrega" do aviso). Se
+dois mexem em áreas vizinhas, antes peça ao intérprete de um deles que junte os
+dois sobre a `main` numa branch local de teste, sem push, e rode o rápido.
+
+- O sim é por PR: o dono diz o número de cada um. "Sim para todos" não basta:
+  liste os PRs e peça o número de cada.
+- PR que carrega outro só entra depois que o de baixo entrou.
+- Cada sim vai para "Decisões e autorizações" com o commit. Commit novo, ou PR
+  que chegou depois do pacote, pede sim novo.
+- Com os sins, cada chat junta o seu PR, um de cada vez, na ordem do pacote,
+  conferindo antes que o commit é o aprovado. Nada entra por autorização geral.
+
 ## Desde a última vez
 
 `local/estado.md` guarda `Visto até:`, a hora do último resumo entregue ao dono.

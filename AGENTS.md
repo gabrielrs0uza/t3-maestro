@@ -229,7 +229,8 @@ lote.
   para o chat dela, num lote numerado. Dois chats nunca alteram os mesmos arquivos
   ao mesmo tempo.
 - Orçamento do config: até 4 intérpretes e 1 vaga pesada (servidor, build,
-  instalação, navegador de teste, container), contando revisores.
+  instalação, navegador de teste, container), contando revisores. Antes de dar a
+  vaga, confira com `scripts/pesados.sh`.
 - Com CI, o que o CI roda não roda na máquina do dono; local, só o rápido dos
   arquivos tocados e o localhost para ele ver a tela. Sem CI, avise que os testes
   vão rodar na máquina dele.
@@ -280,8 +281,9 @@ o dono valida aqui. Código segue esta ordem:
    3); passou, a decisão é do dono.
 4. Depois da revisão e, se for o caso, da validação do dono, o intérprete tira o
    PR do rascunho ou o abre.
-5. Merge só com a aprovação do dono para aquele PR; se ele carrega outro PR, diga
-   ao pedir. Commit novo depois da aprovação: mostre o que mudou e peça de novo.
+5. Merge só com a aprovação do dono para aquele PR; se ele carrega outro, diga ao
+   pedir. Vários prontos: um pacote só, com sim por PR (`skills/pedidos.md`).
+   Commit novo depois da aprovação: mostre o que mudou e peça de novo.
 
 ### Revisor do mesmo provedor
 
@@ -305,8 +307,8 @@ Ficam em `skills/`. Use sem o dono precisar pedir:
 - `blast-radius` e `interrogate`: na revisão. `ferramentas-t3`: antes de dizer
   que algo não dá no T3, ou ao precisar de uma ferramenta que não usa todo dia.
 - `arena` (confirme antes, custa mais), `correct` (proponha quando ele corrigir
-  duas vezes o mesmo erro) e `reflect` (ao fechar um trabalho maior; aplique só o
-  que ele aprovar).
+  duas vezes o mesmo erro) e `reflect` (ao fechar um trabalho maior, com o caderno
+  de lições; aplique só o que ele aprovar).
 
 ## Comandar os chats
 
@@ -362,12 +364,12 @@ sozinho só o regenerável.
 ## Resumo diário
 
 Rotina `T3 Resumo`. Faça as conferências de toda rotina, de "Acompanhar", e rode
-`scripts/maestro.sh atualizar --auto`. Leia `local/estado.md`, as pautas e o diário
-depois de `Visto até` e, sem abrir chat por chat, veja quais pedidos `fazendo`
-estão parados há mais de 2 horas sem aviso (`skills/pedidos.md`, "Parados e
-órfãos"). Abra com o pacote de decisões, se houver algo esperando; depois poucas
-frases, como em "Como avisar": o que ficou pronto e o que está parado, mais a
-versão nova do maestro, se houver. Não cobre o que estiver pausado. Sem novidade,
+`scripts/maestro.sh atualizar --auto` e `scripts/pesados.sh`. Leia o índice, as
+pautas e o diário depois de `Visto até`; sem abrir chat por chat, veja os pedidos
+`fazendo` parados há mais de 2 horas sem aviso (`skills/pedidos.md`, "Parados e
+órfãos"). Abra com o pacote de decisões, se houver algo esperando; depois, como
+em "Como avisar", o que ficou pronto, o que está parado, pesado acima do limite e
+a versão nova do maestro, se houver. Não cobre o que está pausado. Sem novidade,
 não escreva nada. Depois de enviar, avance o `Visto até`.
 
 ## Entrada pelo Linear

@@ -24,6 +24,14 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 ## Próxima versão
 
+- Muda regra e script: pede o seu ok ao atualizar.
+- Antes de dar a vaga de trabalho pesado, o maestro olha o que está ligado em cada
+  chat (servidor, build, container); acima do limite, ele pede para desligar ou
+  conta a você. Espera por vaga tem teto de 15 minutos.
+- Caderno de lições na sua pasta: o que deu errado e a regra que nasceu, com
+  prazo para sair e teto de tamanho.
+- PRs prontos chegam juntos para você aprovar, mas o sim continua sendo por PR.
+
 ## [2.4.0] - 2026-11-26 · Tudo o que espera você, junto
 
 O maestro junta num pacote o que depende de você e confere melhor o que volta dos

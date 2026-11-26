@@ -202,6 +202,14 @@ fica o motivo de cada escolha e o que foi descartado.
   fato curto, que o maestro confere sem ler código.
 - **Revisão abre com "pode ou não pode entrar".** A lista do que bloqueia é fixa;
   o resto vai em "Depois" e só volta para correção se o dono quiser.
+- **A vaga pesada é conferida olhando, não por trava.** `scripts/pesados.sh` só
+  lê: conta uma vaga por worktree com servidor, build ou container. Uma fila como
+  a do `heavy.sh` exigiria escrever fora da worktree e não pegaria o servidor
+  ligado sem passar por ela. Espera por vaga tem teto de 15 minutos.
+- **Caderno de lições em `local/`, com saída obrigatória.** Lição sem regra sai
+  em 14 dias; a que virou regra sai no mês seguinte; teto de 40 linhas.
+- **PRs prontos vão juntos, mas o sim é por PR.** "Sim para todos" não basta, e
+  cada chat junta o seu PR, um de cada vez.
 - **Não trazido:** trabalhadores com acesso total, merge e push automáticos por
   autorização geral, reverter produção sozinho, decidir produto à noite pelo gosto
   presumido do dono, apagar branch ao fechar a frente e `delegate_task` para
