@@ -162,6 +162,10 @@ fica o motivo de cada escolha e o que foi descartado.
   script instalado aceitaria, e a data mostra a idade da versão. Mas perde o sinal
   do primeiro número ("precisa fazer algo à mão") e o salto de 2.1 para 2026.11
   parece uma mudança enorme. Veja [referencias-2026-11.md](referencias-2026-11.md).
+- **Exceção única em 26/11/2026: a 2.4.0 saiu um dia depois da 2.3.0.** Por
+  pedido direto do mantenedor, para começar a usar logo. O que seriam a 2.4.0 e a
+  2.5.0 saiu numa versão só, para pedir um ok só. A regra de no máximo uma versão
+  por semana continua valendo; a exceção não se repete sem outro pedido direto.
 
 ## Uma conversa que dura semanas
 

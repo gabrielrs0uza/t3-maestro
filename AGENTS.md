@@ -276,8 +276,8 @@ o dono valida aqui. Código segue esta ordem:
    branch do trabalho (`baseRef` na branch, `startFromOrigin: false`). O revisor
    segue `skills/blast-radius.md` e `skills/interrogate.md`, analisa aquele commit,
    não sobe servidor sem a vaga pesada, não faz commit nem push e avisa com o
-   veredito e os achados; o que bloqueia volta para o chat original. Pule só com `não revisar` escolhido pelo dono, se ele pedir, ou se a
-   mudança for só texto. Limite de rodadas no config ("Rodadas de revisão por PR",
+   veredito e os achados; o que bloqueia volta para o chat original. Pule só com
+   `não revisar` escolhido pelo dono, se ele pedir, ou se a mudança for só texto. Limite de rodadas no config ("Rodadas de revisão por PR",
    3); passou, a decisão é do dono.
 4. Depois da revisão e, se for o caso, da validação do dono, o intérprete tira o
    PR do rascunho ou o abre.
