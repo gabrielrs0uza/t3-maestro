@@ -1,22 +1,37 @@
 #!/usr/bin/env bash
 # Suíte do scripts/pesados.sh: acha o servidor que roda dentro de uma worktree,
-# ignora o que roda fora, conta uma vaga por worktree e não para nada.
+# ignora o que roda fora, conta uma vaga por worktree, conta container do docker,
+# aguenta nome de pasta com quebra de linha, responde "desconhecido" quando não
+# consegue olhar e não para nada. Os servidores de teste são encerrados no fim,
+# também em falha ou Ctrl-C, e a suíte falha se sobrar algum.
 set -euo pipefail
 unset CDPATH
 RAIZ="$(cd -- "$(dirname -- "$0")/.." >/dev/null && pwd -P)"
-tmp="$(mktemp -d)"
+SCRIPT="$RAIZ/scripts/pesados.sh"
+tmp="$(cd -- "$(mktemp -d)" && pwd -P)"
 pids=()
-limpar() { for p in "${pids[@]+"${pids[@]}"}"; do kill "$p" 2>/dev/null || true; done; rm -rf "$tmp"; }
+encerrar() {
+  local p
+  for p in "${pids[@]+"${pids[@]}"}"; do kill "$p" 2>/dev/null || true; done
+  for p in "${pids[@]+"${pids[@]}"}"; do wait "$p" 2>/dev/null || true; done
+}
+# shellcheck disable=SC2329 # chamada pelos traps abaixo
+limpar() { encerrar; rm -rf "$tmp"; }
 trap limpar EXIT
+trap 'limpar; exit 130' INT
+trap 'limpar; exit 143' TERM
 falhou=0
 ok() { echo "  ok: $1"; }
 erro() { echo "  FALHOU: $1" >&2; falhou=1; }
+ultimo() { printf '%s\n' "$1" | tail -1; }
 
-servidor() { # pasta -> pid de um servidor que escuta numa porta qualquer
+# Sobe um servidor que escuta numa porta qualquer. Roda no shell atual, não num
+# $(...), para o PID ficar em "pids"; o PID vai para a variável "servidor_pid".
+servidor() { # pasta
   mkdir -p "$1"
   (cd -- "$1" && exec python3 -I -m http.server 0 --bind 127.0.0.1 >/dev/null 2>&1) &
-  pids+=("$!")
-  echo "$!"
+  servidor_pid=$!
+  pids+=("$servidor_pid")
 }
 esperar_porta() { # pid
   for _ in $(seq 1 50); do
@@ -26,28 +41,83 @@ esperar_porta() { # pid
   return 1
 }
 
-mkdir -p "$tmp/raiz" "$tmp/vazia"
-dentro="$(servidor "$tmp/raiz/projeto/t3-aaaa/app")"
-dentro2="$(servidor "$tmp/raiz/projeto/t3-aaaa")"
-fora="$(servidor "$tmp/fora")"
-for p in "$dentro" "$dentro2" "$fora"; do esperar_porta "$p" || erro "servidor $p não abriu porta"; done
+mkdir -p "$tmp/raiz" "$tmp/vazia" "$tmp/bin"
+servidor "$tmp/raiz/projeto/t3-aaaa/app"; dentro=$servidor_pid
+servidor "$tmp/raiz/projeto/t3-aaaa"; dentro2=$servidor_pid
+servidor "$tmp/fora"; fora=$servidor_pid
+for p in "${pids[@]}"; do esperar_porta "$p" || erro "servidor $p não abriu porta"; done
 
-saida="$(bash "$RAIZ/scripts/pesados.sh" --raiz "$tmp/raiz" --vagas 1)"
-case "$saida" in *"PID $dentro,"*) ok "acha o servidor dentro da worktree" ;; *) erro "não achou o servidor de dentro: $saida" ;; esac
+saida="$(bash "$SCRIPT" --raiz "$tmp/raiz" --vagas 1)"
+case "$saida" in *"PID $dentro,"*"PID $dentro2,"*|*"PID $dentro2,"*"PID $dentro,"*) ok "acha os dois servidores dentro da worktree" ;; *) erro "não achou os servidores de dentro: $saida" ;; esac
 case "$saida" in *"porta "*) ok "mostra a porta" ;; *) erro "não mostrou a porta" ;; esac
 case "$saida" in *"PID $fora,"*) erro "contou o servidor de fora" ;; *) ok "ignora o que roda fora das worktrees" ;; esac
-[ "$(printf '%s\n' "$saida" | tail -1)" = "RESULTADO: cheio 1 1" ] && ok "dois processos na mesma worktree são uma vaga" || erro "resultado errado: $(printf '%s\n' "$saida" | tail -1)"
+if [ "$(ultimo "$saida")" = "RESULTADO: cheio 1 1" ]; then ok "dois processos na mesma worktree são uma vaga"; else erro "resultado errado: $(ultimo "$saida")"; fi
 
-saida="$(bash "$RAIZ/scripts/pesados.sh" --raiz "$tmp/raiz" --vagas 0)"
-[ "$(printf '%s\n' "$saida" | tail -1)" = "RESULTADO: acima 1 0" ] && ok "acusa quando passa do limite" || erro "não acusou o excesso"
+saida="$(bash "$SCRIPT" --raiz "$tmp/raiz" --vagas 0)"
+if [ "$(ultimo "$saida")" = "RESULTADO: acima 1 0" ]; then ok "acusa quando passa do limite"; else erro "não acusou o excesso"; fi
 
-saida="$(bash "$RAIZ/scripts/pesados.sh" --raiz "$tmp/vazia" --vagas 1)"
-[ "$(printf '%s\n' "$saida" | tail -1)" = "RESULTADO: livre 0 1" ] && ok "sem nada pesado, a vaga está livre" || erro "vazio deu: $saida"
+saida="$(bash "$SCRIPT" --raiz "$tmp/vazia" --vagas 1)"
+if [ "$(ultimo "$saida")" = "RESULTADO: livre 0 1" ]; then ok "sem nada pesado, a vaga está livre"; else erro "vazio deu: $saida"; fi
 
-for p in "$dentro" "$dentro2" "$fora"; do
+# Docker simulado: um container do compose com pasta de trabalho numa worktree,
+# outro sem rótulo e um terceiro fora das worktrees.
+us=$'\037'
+mkdir -p "$tmp/docker/bin" "$tmp/vazia/projeto/t3-cccc"
+cat > "$tmp/docker/bin/docker" <<FIM
+#!/bin/sh
+printf 'abc123${us}$tmp/vazia/projeto/t3-cccc${us}app-db-1\n'
+printf 'def456${us}${us}solto\n'
+printf 'ghi789${us}$tmp/fora${us}outro\n'
+FIM
+chmod +x "$tmp/docker/bin/docker"
+saida="$(PATH="$tmp/docker/bin:$PATH" bash "$SCRIPT" --raiz "$tmp/vazia" --vagas 1)"
+if [ "$(ultimo "$saida")" = "RESULTADO: cheio 1 1" ]; then ok "conta o container do compose dentro da worktree"; else erro "docker simulado deu: $saida"; fi
+case "$saida" in *"container abc123 (app-db-1)"*) ok "mostra o container" ;; *) erro "não mostrou o container: $saida" ;; esac
+case "$saida" in *solto*|*def456*|*ghi789*) erro "contou container sem pasta ou de fora" ;; *) ok "ignora container sem pasta ou de fora" ;; esac
+
+# Pasta com quebra de linha no nome: cada item continua numa linha só.
+servidor "$tmp/raiz/projeto/t3-b"$'\n'"b"; quebra=$servidor_pid
+esperar_porta "$quebra" || erro "servidor com quebra de linha não abriu porta"
+saida="$(bash "$SCRIPT" --raiz "$tmp/raiz" --vagas 2)"
+if [ "$(ultimo "$saida")" = "RESULTADO: cheio 2 2" ]; then ok "pasta com quebra de linha conta como uma worktree"; else erro "quebra de linha deu: $(ultimo "$saida")"; fi
+soltas="$(printf '%s\n' "$saida" | grep -vE '^(Pesados agora|- |    |Memória livre|Vagas pesadas|RESULTADO)' || true)"
+if [ -z "$soltas" ]; then ok "nenhuma linha quebrada na saída"; else erro "linhas quebradas: $soltas"; fi
+
+# Sem ps ou sem lsof, o script não consegue olhar: "desconhecido" e saída 3.
+for c in bash dirname pwd awk sed grep sort cut tr wc date readlink head cat uname mkdir; do
+  alvo="$(command -v "$c" || true)"
+  [ -n "$alvo" ] && ln -s "$alvo" "$tmp/bin/$c"
+done
+for falta in ps lsof; do
+  rm -rf "$tmp/bin-$falta"; cp -R "$tmp/bin" "$tmp/bin-$falta"
+  for c in ps lsof; do
+    [ "$c" = "$falta" ] && continue
+    alvo="$(command -v "$c" || true)"; [ -n "$alvo" ] && ln -s "$alvo" "$tmp/bin-$falta/$c"
+  done
+  codigo=0
+  saida="$(PATH="$tmp/bin-$falta" bash "$SCRIPT" --raiz "$tmp/raiz" --vagas 1 2>/dev/null)" || codigo=$?
+  if [ "$(ultimo "$saida")" = "RESULTADO: desconhecido" ] && [ "$codigo" -ne 0 ]; then
+    ok "sem $falta, responde desconhecido com saída $codigo"
+  else
+    erro "sem $falta deu \"$(ultimo "$saida")\" com saída $codigo"
+  fi
+done
+
+for p in "${pids[@]}"; do
   kill -0 "$p" 2>/dev/null || erro "o processo $p morreu: o script só pode ler"
 done
-[ "$falhou" -eq 0 ] && ok "nenhum processo foi parado"
+[ "$falhou" -eq 0 ] && ok "nenhum processo foi parado pelo script"
+
+# No fim, nenhum servidor de teste pode sobrar.
+encerrar
+sobra=""
+for p in "${pids[@]}"; do kill -0 "$p" 2>/dev/null && sobra="$sobra $p"; done
+sobra2=""
+while read -r p _; do
+  pasta="$(lsof -a -p "$p" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' || true)"
+  case "$pasta" in "$tmp"/*) sobra2="$sobra2 $p" ;; esac
+done < <(pgrep -f -- "-I -m http.server 0 --bind 127.0.0.1" || true)
+if [ -z "$sobra$sobra2" ]; then ok "nenhum servidor de teste sobrou"; else erro "sobraram servidores:$sobra$sobra2"; fi
 
 if [ "$falhou" -eq 0 ]; then echo; echo "Todos os casos passaram."; fi
 exit "$falhou"

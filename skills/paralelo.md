@@ -89,6 +89,8 @@ Quem distribui a vaga é você:
    `scripts/pesados.sh` na pasta do maestro: só lê, lista o que pesa em cada
    worktree (PID, início, memória, porta) e a memória livre, e termina em
    `RESULTADO: livre|cheio|acima <em uso> <vagas>`. Só dê a vaga com `livre`.
+   `desconhecido` quer dizer que ele não conseguiu olhar: não dê a vaga sem
+   conferir de outro jeito ou perguntar ao dono.
    Com `cheio`, `acima` ou memória apertada, espere até 15 minutos; passou disso,
    peça ao chat que segura a vaga há mais tempo sem uso que desligue, ou conte ao
    dono quem está segurando. Espera sem teto não termina.

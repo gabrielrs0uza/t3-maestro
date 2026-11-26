@@ -13,6 +13,8 @@
 # Conta uma vaga por worktree com algo pesado, não por processo: um servidor de
 # desenvolvimento costuma abrir vários. A última linha é
 #   RESULTADO: livre|cheio|acima <em uso> <vagas>
+# ou, sem ps ou lsof para olhar, "RESULTADO: desconhecido", com saída 3: sem
+# conseguir olhar, a vaga não está livre. Sem docker, só não há containers.
 set -euo pipefail
 unset CDPATH
 
@@ -35,6 +37,20 @@ if [ -z "$vagas" ]; then
 fi
 case "$vagas" in ''|*[!0-9]*) vagas=1 ;; esac
 
+desconhecido() { # motivo
+  echo "Não deu para olhar: $1." >&2
+  echo "RESULTADO: desconhecido"
+  exit 3
+}
+command -v ps >/dev/null 2>&1 || desconhecido "sem ps"
+command -v lsof >/dev/null 2>&1 || desconhecido "sem lsof"
+processos="$(ps -eo pid=,args= 2>/dev/null)" || desconhecido "ps falhou"
+[ -n "$processos" ] || desconhecido "ps não listou nada"
+
+# Nome de pasta ou comando com quebra de linha ou outro controle vira "?", para
+# cada item caber numa linha.
+limpo() { printf '%s' "$1" | LC_ALL=C tr '\001-\037\177' '?'; }
+
 # Raízes com o caminho real, para comparar com a pasta de cada processo.
 reais=()
 for r in "${raizes[@]}"; do
@@ -47,7 +63,7 @@ PADRAO='(^|[ /])(next|vite|webpack|turbo|tsc|jest|vitest|playwright|storybook|nu
 pasta_de() { # pid -> diretório atual do processo
   if [ -r "/proc/$1/cwd" ]; then
     readlink "/proc/$1/cwd" 2>/dev/null || true
-  elif command -v lsof >/dev/null 2>&1; then
+  else
     lsof -a -p "$1" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' | head -1 || true
   fi
   return 0
@@ -67,20 +83,15 @@ worktree_de() { # pasta -> a worktree (dois níveis abaixo da raiz) ou vazio
 }
 
 # Portas em escuta, uma linha "pid porta" por par.
-portas=""
-if command -v lsof >/dev/null 2>&1; then
-  portas="$(lsof -nP -iTCP -sTCP:LISTEN -Fpn 2>/dev/null |
-    awk '/^p/ { pid = substr($0, 2) } /^n/ { n = split($0, a, ":"); print pid, a[n] }' | sort -u || true)"
-else
-  echo "Aviso: sem lsof, as portas não aparecem." >&2
-fi
+portas="$(lsof -nP -iTCP -sTCP:LISTEN -Fpn 2>/dev/null |
+  awk '/^p/ { pid = substr($0, 2) } /^n/ { n = split($0, a, ":"); print pid, a[n] }' | sort -u || true)"
 portas_de() { # pid -> portas separadas por vírgula
   printf '%s\n' "$portas" | awk -v p="$1" '$1 == p { printf "%s%s", s, $2; s = "," }'
 }
 
 candidatos="$(
   { printf '%s\n' "$portas" | awk 'NF { print $1 }'
-    ps -eo pid=,args= 2>/dev/null | grep -iE -- "$PADRAO" | awk '{print $1}' || true
+    printf '%s\n' "$processos" | grep -iE -- "$PADRAO" | awk '{print $1}' || true
   } | sort -un
 )"
 
@@ -92,24 +103,28 @@ for pid in $candidatos; do
   [ -n "$pasta" ] || continue
   wt="$(worktree_de "$pasta")"
   [ -n "$wt" ] || continue
+  wt="$(limpo "$wt")"
   inicio="$(ps -o lstart= -p "$pid" 2>/dev/null | sed 's/^ *//; s/ *$//' || true)"
   [ -n "$inicio" ] || continue
   usadas+="$wt"$'\n'
   kb="$(ps -o rss= -p "$pid" 2>/dev/null | tr -d ' ' || true)"
-  cmd="$(ps -o args= -p "$pid" 2>/dev/null | cut -c1-120 | sed 's/ *$//' || true)"
+  cmd="$(limpo "$(ps -o args= -p "$pid" 2>/dev/null | cut -c1-120 | sed 's/ *$//' || true)")"
   porta="$(portas_de "$pid")"
-  linhas+="$wt	PID $pid, desde $inicio, $(( ${kb:-0} / 1024 )) MB${porta:+, porta $porta}: $cmd"$'\n'
+  linhas+="$wt"$'\t'"PID $pid, desde $inicio, $(( ${kb:-0} / 1024 )) MB${porta:+, porta $porta}: $cmd"$'\n'
 done
 
-# Containers do docker compose cuja pasta de trabalho é uma worktree.
+# Containers do docker compose cuja pasta de trabalho é uma worktree. Os campos
+# vêm separados pelo caractere 0x1f, que não é espaço: campo vazio não some.
+US=$'\037'
 if command -v docker >/dev/null 2>&1; then
-  while IFS='	' read -r id pasta nome; do
+  while IFS="$US" read -r id pasta nome; do
     [ -n "$id" ] || continue
     wt="$(worktree_de "$pasta")"
     [ -n "$wt" ] || continue
+    wt="$(limpo "$wt")"
     usadas+="$wt"$'\n'
-    linhas+="$wt	container $id ($nome)"$'\n'
-  done < <(docker ps --format '{{.ID}}	{{.Label "com.docker.compose.project.working_dir"}}	{{.Names}}' 2>/dev/null || true)
+    linhas+="$wt"$'\t'"container $(limpo "$id") ($(limpo "$nome"))"$'\n'
+  done < <(docker ps --format "{{.ID}}$US{{.Label \"com.docker.compose.project.working_dir\"}}$US{{.Names}}" 2>/dev/null || true)
 fi
 
 em_uso="$(printf '%s' "$usadas" | awk 'NF' | sort -u | wc -l | tr -d ' ')"
