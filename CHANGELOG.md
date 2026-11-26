@@ -24,6 +24,17 @@ quê: [docs/referencias-2026-11.md](docs/referencias-2026-11.md).
 
 ## Próxima versão
 
+- Muda regra: pede o seu ok ao atualizar.
+- O que espera o seu sim aparece junto, num pacote: no resumo, quando você pede
+  ou quando juntam três. Cada item traz a recomendação, o que acontece se você não
+  responder e se dá para desfazer.
+- Cada frente diz em que arquivos mexe, e o maestro confere na volta; prints e
+  exemplos que você mandou chegam ao chat como vieram.
+- A revisão começa dizendo se pode ou não entrar; só o que bloqueia volta para
+  correção, o resto fica com você.
+- Antes de pedir um merge, o maestro diz se o PR carrega outro que ainda espera
+  você.
+
 ## [2.3.0] - 2026-11-25 · Lista mais limpa
 
 A lista de chats mostra só o que espera você, e o maestro passa a conhecer todas

@@ -40,6 +40,12 @@ para uma etapa em sequência.
 
 - Cada trabalhador tem a área dele declarada no pedido ("você só altera X") e uma
   worktree empilhada na branch do PR: `baseRef` na branch e `startFromOrigin: false`.
+  Branch empilhada carrega os commits da de baixo: o merge dela publica os dois.
+- Todo pedido de código tem área. A pauta guarda as "Áreas em uso"; antes de abrir
+  um chat, confira se a área nova cruza uma aberta. Na volta, compare a linha
+  "Arquivos" do aviso com a área: arquivo fora dela, pergunte antes de seguir.
+- Abra primeiro o chat que destrava os outros. Mantenha seus turnos curtos: o aviso
+  de um intérprete só é lido quando o seu turno acaba.
 - Um integrador por frente: o chat dono da branch. Ele traz um trabalhador por vez
   para a branch, roda os testes, e os outros atualizam. Quem conflitar resolve e
   testa de novo. Integrar aqui é juntar commits na branch do trabalho; merge de PR,
@@ -52,7 +58,8 @@ para uma etapa em sequência.
 ## Rodadas de revisão
 
 Uma rodada é um parecer do revisor sobre um commit. O limite por PR, para o mesmo
-escopo, é o número de "Rodadas de revisão por PR" do config (3, por padrão).
+escopo, é o número de "Rodadas de revisão por PR" do config (3, por padrão). Só o
+que bloqueia volta para correção sem perguntar; o "Depois" vai ao dono como opção.
 
 Ao passar do limite, não abra revisor nem correção. Leve ao dono uma decisão, com
 os achados que sobraram: aceitar como limites conhecidos, redesenhar, cortar escopo

@@ -22,12 +22,17 @@ documento e análise>. Siga <pasta do maestro>/skills/roteiros.md e
 <como saber que está pronto>
 
 ## Área
-Você só altera: <arquivos e pastas>. Se precisar mexer fora disso, pare e avise.
+Você só altera: <arquivos e pastas>. <Se ainda não dá para saber: área provisória,
+e avise antes de sair dela.> Se precisar mexer fora disso, pare e avise.
+
+## Referências do dono
+<Cada link, print ou exemplo que ele deu, com as palavras dele entre aspas; as
+imagens vão anexadas.> Diga na resposta final onde usou cada uma.
 
 ## Como trabalhar
 <Código:> Comece com git fetch. Se estiver atrás de origin/<branch principal>,
 atualize antes de trabalhar. Use a branch <nome>. Implemente, rode os testes e
-faça commit local. <Se muda algo que o usuário vê: suba em localhost com dados
+faça commit local, adicionando arquivo por arquivo, nunca a pasta inteira. <Se muda algo que o usuário vê: suba em localhost com dados
 fictícios e mande ao maestro a URL, o que clicar e as provas de tela; espere a
 validação.> PR fora do rascunho, só quando o maestro pedir.
 CI: <Com CI (<arquivo>; roda ou não em rascunho; pushes seguidos cancelam ou não
@@ -39,7 +44,8 @@ dentro do orçamento; sem push nem PR antes de o maestro pedir.>
 
 ## Como conferir
 <testes a rodar, ou a checagem das fontes>. Copie na resposta final a saída real
-e o commit em que rodou. Diga o que não foi testado.
+e o commit em que rodou, com quantos testes rodaram e quantos foram pulados: "passou"
+sem nada rodado não conta. Diga o que não foi testado.
 
 ## Proibições
 Sem merge, deploy, alteração em dados de produção ou exclusão sem aprovação do
@@ -66,7 +72,10 @@ etapa>, e uma mensagem de até 15 linhas:
 
 Pedidos: <LJ-13 feito; LJ-14 esperando decisão>
 Commit: <sha> na branch <nome> (ou onde salvou)
-Prova: <comando> -> <resultado> (ou caminho do print)
+Arquivos: <os que você mudou>
+Carrega: <nenhum | a branch ou PR de outro trabalho cujos commits estão na sua,
+conferido com git merge-base --is-ancestor>
+Prova: <comando> -> <resultado, quantos rodaram e quantos pulados> (ou print)
 Não testado: <o quê>
 Pergunta: <exata, se houver>
 Recursos: worktree <caminho> (limpa ou não, commits sem push); portas <...>;
@@ -83,8 +92,19 @@ espera o dono validar no localhost, aprovar um PR ou dar uma permissão aqui.
 
 Troque "Como trabalhar" por: "Analise o commit <sha> da branch <nome>, sem commit
 nem push. Siga <pasta do maestro>/skills/blast-radius.md e
-<pasta do maestro>/skills/interrogate.md." No aviso, os achados entram no lugar de
-"Prova", cada um com o comando e a saída.
+<pasta do maestro>/skills/interrogate.md." Mantenha a "Área": é onde olhar
+primeiro. No aviso, no lugar de "Prova":
+
+```
+Veredito: <pode entrar | não pode entrar>, com cada achado que bloqueia (ou
+"nada bloqueia"), cada um com o comando e a saída.
+Bloqueia: perder ou corromper dados, errar com dinheiro, abrir acesso ou expor
+dado privado, mandar mensagem errada para fora, quebrar build, deploy ou
+migração, mostrar ao usuário algo errado, faltando ou contraditório, teste
+obrigatório falhando ou sem rodar.
+Revisado: <commit, arquivos, testes rodados>. Sem olhar: <o quê>.
+Depois: <o que não bloqueia, do mais sério ao menos>
+```
 
 ### Revisor do mesmo provedor
 

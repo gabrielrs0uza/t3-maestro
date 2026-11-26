@@ -27,6 +27,8 @@ intenção. Junte os de mesma causa.
 
 ## Entregar
 
+- Veredito primeiro: pode ou não pode entrar, e o que bloqueia, pela lista de
+  `mensagem-filho.md`, "Para o revisor". O resto vai em "Depois".
 - Intenção: a frase do início.
 - Achados: comando, saída e como contraria a intenção, ou "nenhum achado confirmado".
 - Descartados: quantos e por quê.

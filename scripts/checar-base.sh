@@ -22,7 +22,7 @@ longas="$(awk '
 # Orçamento de contexto, como o do T3 Code: as regras não crescem sem alguém
 # decidir. Subir estes números é uma decisão do PR, escrita no CHANGELOG.
 [ "$(wc -l < AGENTS.md)" -le 450 ] || erro "AGENTS.md passou de 450 linhas; enxugue ou suba o teto aqui, com motivo"
-[ "$(cat skills/*.md | wc -l)" -le 1550 ] || erro "skills/ passou de 1550 linhas; enxugue ou suba o teto aqui, com motivo" # 1550: ferramentas-t3 é guia de consulta, não regra lida a cada turno
+[ "$(cat skills/*.md | wc -l)" -le 1620 ] || erro "skills/ passou de 1620 linhas; enxugue ou suba o teto aqui, com motivo" # 1550: ferramentas-t3 é guia de consulta; 1620 (v2.4.0): pacote de decisões, áreas e veredito da revisão
 for leia in README*.md; do
   grep -qE "badge/(version|vers%C3%A3o)-$versao-" "$leia" || erro "o selo de versão de $leia não diz $versao"
 done

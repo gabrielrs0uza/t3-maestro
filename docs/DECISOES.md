@@ -191,6 +191,22 @@ fica o motivo de cada escolha e o que foi descartado.
 - **Aprovação de merge vale para o PR como estava.** Commit novo depois da
   aprovação: mostrar o que mudou e pedir de novo.
 
+## Ideias do coordinator do Copybook (26/11/2026)
+
+- **Pacote de decisões em momentos fixos, não em toda mensagem.** Topo do resumo
+  diário, a pedido, com 3 decisões ou mais, e antes de merge de risco. Uma seção
+  fixa no fim de toda resposta repetiria o que já foi dito.
+- **Mostrar o pacote não é aprovação.** Cada sim vale só para o seu item e entra
+  no registro com as palavras do dono.
+- **Área obrigatória em código, conferida pela linha "Arquivos" do aviso.** É um
+  fato curto, que o maestro confere sem ler código.
+- **Revisão abre com "pode ou não pode entrar".** A lista do que bloqueia é fixa;
+  o resto vai em "Depois" e só volta para correção se o dono quiser.
+- **Não trazido:** trabalhadores com acesso total, merge e push automáticos por
+  autorização geral, reverter produção sozinho, decidir produto à noite pelo gosto
+  presumido do dono, apagar branch ao fechar a frente e `delegate_task` para
+  frentes.
+
 ## Fora desta versão
 
 - Skills no formato `SKILL.md` e distribuição como plugin: só quando houver

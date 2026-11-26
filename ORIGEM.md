@@ -42,6 +42,21 @@ commit `dd15e63` (versão 0.10.0, de 07/11/2026), cujo `upstream.json` fixa o ps
 - limite de três devoluções de revisão antes de virar decisão do dono;
 - apagar só o que o próprio trabalho criou.
 
+## Ideias trazidas na versão 2.4.0
+
+Ideias, não texto, do "coordinator skill" do Copybook
+([copybook.page](https://copybook.page/t/coordinator-skill-for-claude-code-and-codex)),
+pasta `standalone/coordinator` de `Heyvhuang/copybook-skills`, lida no commit
+`7efd216` (26/11/2026). A pasta é MIT (VOXYZ LABS LTD); o texto das skills do
+repositório é CC BY 4.0. Tudo foi reescrito em português; nada foi copiado.
+
+- pacote de decisões, da "release packet" e da "morning list";
+- área de cada frente no pedido, conferida na volta;
+- revisão que começa pelo veredito, com a lista do que bloqueia;
+- conferir se uma branch carrega outra que espera o dono;
+- referências e prints do dono levados como vieram;
+- ligar cada PR ao chat que o abriu, e ler a atividade de chat parado.
+
 ## O que não está registrado
 
 A versão exata do pstack-t3 usada na primeira adaptação das skills não ficou

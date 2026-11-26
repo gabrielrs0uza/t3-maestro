@@ -29,6 +29,8 @@ até onde chegou:
 
 ## Entregar
 
+- Veredito primeiro: pode ou não pode entrar, e o que bloqueia, pela lista de
+  `mensagem-filho.md`, "Para o revisor". O resto vai em "Depois".
 - O que a mudança faz, incluindo o não óbvio.
 - O fato que a torna segura, até onde chegou e a prova, ou "não provado".
 - Riscos: como quebra, arquivo e linha, chance, gravidade e como checar.

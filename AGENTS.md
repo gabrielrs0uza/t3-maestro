@@ -160,7 +160,7 @@ mostrar. Siga `skills/pedidos.md`.
   contagens só se ele pedir acompanhamento detalhado ou se o ID for indispensável
   para separar duas coisas numa decisão.
 - Decisão que só o dono pode tomar: pergunte uma vez, com sua recomendação, e siga
-  com o resto.
+  com o resto. Com 3 ou mais em aberto, mostre o pacote de decisões.
 
 ## Verificar antes de afirmar
 
@@ -265,23 +265,23 @@ Trabalho sem código não tem branch nem PR: o intérprete salva na pasta combin
 o dono valida aqui. Código segue esta ordem:
 
 1. O intérprete implementa na branch dele, roda o rápido e faz commit. Com CI, faz
-   push e abre cedo um PR em rascunho, que você acompanha com
-   `watch_pull_request`. Rascunho não é publicação.
+   push e abre cedo um PR em rascunho. Ligue-o ao chat dele (`link_pull_request`
+   com o `threadId` dele) e acompanhe com `watch_pull_request`. Rascunho não é
+   publicação.
 2. Se muda algo que o usuário vê, sobe em localhost com dados fictícios e a vaga
    pesada e passa ao dono a URL, o que clicar e as provas de tela. Só segue depois
    que ele validar. Regra do time que proíba PR antes de validar vale como está.
 3. Revisão, num chat novo, sem pedir: no mesmo projeto, em worktree a partir da
    branch do trabalho (`baseRef` na branch, `startFromOrigin: false`). O revisor
    segue `skills/blast-radius.md` e `skills/interrogate.md`, analisa aquele commit,
-   não sobe servidor sem a vaga pesada,
-   não faz commit nem push e avisa com os achados; correção volta para o chat
-   original. Pule só com `não revisar` escolhido pelo dono, se ele pedir, ou se a
+   não sobe servidor sem a vaga pesada, não faz commit nem push e avisa com o
+   veredito e os achados; o que bloqueia volta para o chat original. Pule só com `não revisar` escolhido pelo dono, se ele pedir, ou se a
    mudança for só texto. Limite de rodadas no config ("Rodadas de revisão por PR",
    3); passou, a decisão é do dono.
 4. Depois da revisão e, se for o caso, da validação do dono, o intérprete tira o
    PR do rascunho ou o abre.
-5. Merge só com a aprovação do dono para aquele PR. Commit novo depois da
-   aprovação: mostre o que mudou e peça de novo.
+5. Merge só com a aprovação do dono para aquele PR; se ele carrega outro PR, diga
+   ao pedir. Commit novo depois da aprovação: mostre o que mudou e peça de novo.
 
 ### Revisor do mesmo provedor
 
@@ -365,10 +365,10 @@ Rotina `T3 Resumo`. Faça as conferências de toda rotina, de "Acompanhar", e ro
 `scripts/maestro.sh atualizar --auto`. Leia `local/estado.md`, as pautas e o diário
 depois de `Visto até` e, sem abrir chat por chat, veja quais pedidos `fazendo`
 estão parados há mais de 2 horas sem aviso (`skills/pedidos.md`, "Parados e
-órfãos"). Mande poucas frases, como em "Como avisar": o que ficou pronto, o que
-está parado e o que depende do dono, mais a versão nova do maestro, se houver.
-Não cobre o que estiver pausado. Sem novidade, não escreva nada. Depois de enviar,
-avance o `Visto até`.
+órfãos"). Abra com o pacote de decisões, se houver algo esperando; depois poucas
+frases, como em "Como avisar": o que ficou pronto e o que está parado, mais a
+versão nova do maestro, se houver. Não cobre o que estiver pausado. Sem novidade,
+não escreva nada. Depois de enviar, avance o `Visto até`.
 
 ## Entrada pelo Linear
 
@@ -391,8 +391,8 @@ execução:
    no índice "pausada pela rotina" e encerre sem escrever. Ao abrir um chat ou
    enviar uma ordem, religue só a pausada pela rotina; a desligada pelo dono,
    nunca.
-2. Leia os chats dos pedidos `fazendo` e procure perguntas com
-   `t3_pending_request`. Chat parado sem explicação pode ser aprovação de
+2. Leia os chats dos pedidos `fazendo` (o parado, com `view: "activity"`) e
+   procure perguntas com `t3_pending_request`. Chat parado sem explicação pode ser aprovação de
    permissão pendente: diga ao dono para abrir aquele chat.
 3. Chat parado há mais de 10 minutos sem aviso: uma única cutucada, com
    `clientRequestId` `cutucada-<threadId>-<id da execução>`. Não reinicie nem
