@@ -150,8 +150,9 @@ confirmar. Cada item:
 
 A versão longa acrescenta o que não foi testado, até onde dá para voltar atrás e
 o que fica para outro sim. Ele responde por número ("1 sim, 2 depois") ou por
-botões (`AskUserQuestion`, até 4 itens por vez, só dentro do pacote). Mostrar o pacote não é pedir de novo:
-item sem resposta continua esperando, e cada sim vale só para o seu item.
+botões (`AskUserQuestion`, até 4 itens por vez, só dentro do pacote). Mostrar o
+pacote não é pedir de novo: item sem resposta continua esperando, e cada sim vale
+só para o seu item.
 
 ### PRs prontos juntos
 
