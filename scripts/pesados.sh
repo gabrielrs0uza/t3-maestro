@@ -21,13 +21,17 @@ unset CDPATH
 RAIZ="$(cd -- "$(dirname -- "$0")/.." >/dev/null && pwd -P)"
 . "$RAIZ/scripts/lib-maestro.sh"
 
+# Nome de pasta ou comando com quebra de linha ou outro controle vira "?", para
+# cada item caber numa linha.
+limpo() { printf '%s' "$1" | LC_ALL=C tr '\001-\037\177' '?'; }
+
 raizes=()
 vagas=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --raiz) [ -n "${2:-}" ] || { echo "uso: --raiz <pasta>" >&2; exit 2; }; raizes+=("$2"); shift ;;
     --vagas) vagas="${2:-}"; shift ;;
-    *) echo "opção desconhecida: $1" >&2; exit 2 ;;
+    *) echo "opção desconhecida: $(limpo "$1")" >&2; exit 2 ;;
   esac
   shift
 done
@@ -46,10 +50,6 @@ command -v ps >/dev/null 2>&1 || desconhecido "sem ps"
 command -v lsof >/dev/null 2>&1 || desconhecido "sem lsof"
 processos="$(ps -eo pid=,args= 2>/dev/null)" || desconhecido "ps falhou"
 [ -n "$processos" ] || desconhecido "ps não listou nada"
-
-# Nome de pasta ou comando com quebra de linha ou outro controle vira "?", para
-# cada item caber numa linha.
-limpo() { printf '%s' "$1" | LC_ALL=C tr '\001-\037\177' '?'; }
 
 # Raízes com o caminho real, para comparar com a pasta de cada processo.
 reais=()
@@ -75,7 +75,9 @@ worktree_de() { # pasta -> a worktree (dois níveis abaixo da raiz) ou vazio
     case "$p" in
       "$r"/*)
         resto="${p#"$r"/}"
-        printf '%s/%s\n' "$r" "$(printf '%s' "$resto" | cut -d/ -f1-2)"
+        um="${resto%%/*}"; resto="${resto#"$um"}"; resto="${resto#/}"
+        if [ -n "$resto" ]; then printf '%s/%s/%s\n' "$r" "$um" "${resto%%/*}"
+        else printf '%s/%s\n' "$r" "$um"; fi
         return 0 ;;
     esac
   done
@@ -128,7 +130,9 @@ if command -v docker >/dev/null 2>&1; then
 fi
 
 em_uso="$(printf '%s' "$usadas" | awk 'NF' | sort -u | wc -l | tr -d ' ')"
-echo "Pesados agora ($(date -u '+%Y-%m-%d %H:%M UTC')), em ${raizes[*]}:"
+mostradas=""
+for r in "${raizes[@]}"; do mostradas="${mostradas:+$mostradas }$(limpo "$r")"; done
+echo "Pesados agora ($(date -u '+%Y-%m-%d %H:%M UTC')), em $mostradas:"
 if [ "$em_uso" -eq 0 ]; then
   echo "- nada pesado rodando nas worktrees"
 else

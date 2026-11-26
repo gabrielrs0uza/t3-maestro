@@ -29,7 +29,7 @@ ultimo() { printf '%s\n' "$1" | tail -1; }
 # $(...), para o PID ficar em "pids"; o PID vai para a variável "servidor_pid".
 servidor() { # pasta
   mkdir -p "$1"
-  (cd -- "$1" && exec python3 -I -m http.server 0 --bind 127.0.0.1 >/dev/null 2>&1) &
+  (cd -- "$1" && exec python3 -I -m http.server 0 --bind 127.0.0.1 >>"$tmp/servidores.log" 2>&1) &
   servidor_pid=$!
   pids+=("$servidor_pid")
 }
@@ -38,6 +38,9 @@ esperar_porta() { # pid
     lsof -nP -a -p "$1" -iTCP -sTCP:LISTEN >/dev/null 2>&1 && return 0
     sleep 0.2
   done
+  echo "  servidor $1: vivo=$(kill -0 "$1" 2>/dev/null && echo sim || echo não)" >&2
+  sed 's/^/    log: /' "$tmp/servidores.log" >&2 || true
+  lsof -nP -a -p "$1" 2>&1 | sed 's/^/    lsof: /' | tail -8 >&2 || true
   return 1
 }
 
@@ -82,6 +85,15 @@ saida="$(bash "$SCRIPT" --raiz "$tmp/raiz" --vagas 2)"
 if [ "$(ultimo "$saida")" = "RESULTADO: cheio 2 2" ]; then ok "pasta com quebra de linha conta como uma worktree"; else erro "quebra de linha deu: $(ultimo "$saida")"; fi
 soltas="$(printf '%s\n' "$saida" | grep -vE '^(Pesados agora|- |    |Memória livre|Vagas pesadas|RESULTADO)' || true)"
 if [ -z "$soltas" ]; then ok "nenhuma linha quebrada na saída"; else erro "linhas quebradas: $soltas"; fi
+
+# Raiz com quebra de linha no nome: o cabeçalho também fica numa linha só.
+saida="$(bash "$SCRIPT" --raiz "$tmp/raiz"$'\n'"controle" --vagas 1)"
+soltas="$(printf '%s\n' "$saida" | grep -vE '^(Pesados agora|- |    |Memória livre|Vagas pesadas|RESULTADO)' || true)"
+if [ -z "$soltas" ] && printf '%s\n' "$saida" | head -1 | grep -qF "raiz?controle"; then
+  ok "raiz com quebra de linha aparece numa linha só, com ?"
+else
+  erro "cabeçalho quebrado: $(printf '%s\n' "$saida" | head -3)"
+fi
 
 # Sem ps ou sem lsof, o script não consegue olhar: "desconhecido" e saída 3.
 for c in bash dirname pwd awk sed grep sort cut tr wc date readlink head cat uname mkdir; do
